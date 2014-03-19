@@ -1,3 +1,4 @@
+
 == Team members 
 * olumide ojo
 * Rebekah Carter
@@ -5,4 +6,5 @@
 * De'Liyuon Hamb
 * Tatiana Atkins
 * Jeremy Nichols
-*Taneisha Bruessard
+* Taneisha Bruessard
+* Matthew Dickerson
