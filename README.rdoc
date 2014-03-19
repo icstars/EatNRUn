@@ -1,4 +1,4 @@
-== Team members 
+== Team members
 * olumide ojo
 * Rebekah Carter
 * Rigoberto Leguizamo
@@ -10,5 +10,9 @@
 * Matthew Dickerson
 * Sontcera McWilliams
 * DeAustin Benson
+<<<<<<< HEAD
 * Joe Tidei
+=======
+* Martina Josimovska
+>>>>>>> Add name
 
