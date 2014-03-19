@@ -10,3 +10,5 @@
 * Matthew Dickerson
 * Sontcera McWilliams
 * DeAustin Benson
+* Joe Tidei
+
