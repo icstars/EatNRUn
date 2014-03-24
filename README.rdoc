@@ -10,9 +10,5 @@
 * Matthew Dickerson
 * Sontcera McWilliams
 * DeAustin Benson
-<<<<<<< HEAD
 * Joe Tidei
-=======
 * Martina Josimovska
->>>>>>> Add name
-
