@@ -12,3 +12,4 @@
 * DeAustin Benson
 * Joe Tidei
 * Martina Josimovska
+* Erik Hernandez
