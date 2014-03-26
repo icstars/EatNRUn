@@ -24,11 +24,8 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
+    background-color:#66CCCC;
+
         linear,
         left top,
         left bottom,
@@ -68,12 +65,29 @@ body {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
+/*button{
+    position: absolute;
+    left: 150px;
 
+}*/
 h1 {
-    font-size:24px;
-    font-weight:normal;
+    font-size:64px;
+    font-weight:bold;
+    color: #9900FF;
+    font-family: Rockwell;
     margin:0px;
     overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+h3 {
+    font-size:40px;
+    font-weight:bold;
+    color: #FF6600;
+    font-family: Fantasy;
+    margin:0px;
+    ocerflow:visible;
     padding:0px;
     text-align:center;
 }
@@ -81,7 +95,7 @@ h1 {
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
-    color:#FFFFFF;
+    color:#FFOOOO;
     font-size:12px;
     margin:0px 30px;
     padding:2px 0px;
