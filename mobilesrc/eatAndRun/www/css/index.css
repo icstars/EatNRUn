@@ -65,11 +65,15 @@ body {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
-/*button{
-    position: absolute;
-    left: 150px;
+.buttons {
+    text-align:center;
+    padding-top: 2em;
+}
 
-}*/
+.buttons button {
+    height: 3em;
+    width: 6em;
+}
 h1 {
     font-size:64px;
     font-weight:bold;
