@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<link rel="stylesheet" href="css/kraken.css" type="text/css">
+<link rel="stylesheet" href="css/tabby-css.css" type="text/css">
+  <meta charset="utf-8">
+<html>
+<title>Eat N' Run</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- A basic responsive reset -->
+	<style>
+		@-webkit-viewport { width: device-width; zoom: 1.0; }
+		   @-moz-viewport { width: device-width; zoom: 1.0; }
+			@-ms-viewport { width: device-width; zoom: 1.0; }
+			 @-o-viewport { width: device-width; zoom: 1.0; }
+				@viewport { width: device-width; zoom: 1.0; }
+
+		html { overflow-y: auto; }
+
+		img, audio, video, canvas { max-width: 100%; }
+
+		/*  Sets body width */
+		.container {
+			max-width: 40em;
+			width: 88%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="css/tabby-css.css" type="text/css">
+
+	<!-- HTML5 Shim for IE -->
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<section class="container">
+		<h1 style="text-align: center; font-size: 3em;">About</h1>
+		<p style="text-align: center; font-size: 1.5em;">Eat N' Run</p>
+
+
+		<h2 align="center">Lunch Lady Madness</h2>
+
+		<div class="tabs" align="center">
+		  <button data-tab="#tab1">Gameplay</button>
+			<button data-tab="#tab2">Objective</button>
+			<button data-tab="#tab3">Rules</button>
+            <button data-tab="#tab4">Scoring</button>
+		</div>
+
+		<div class="tabs-content">
+			<div class="tabs-pane active" id="tab1">
+				<p><strong>Gameplay</strong></p>
+				<p>As you start the game, you will begin by being chased by a Lunch Lady that is mad that you have skipped your lunch today. By making balanced healthy eating choices you will be able to outrun the Lunch Lady.</p>
+			</div>
+
+			<div class="tabs-pane" id="tab2">
+				<p><strong>Objective</strong></p>
+				<p>The game is pretty simple; eat what you want, keeping in mind that the choices that you make will impact your running ability. To be able to maximize your running potential, you will need to eat a balance of foods that are fun to eat and foods that are fun and healthy!</p>
+			</div>
+
+			<div class="tabs-pane" id="tab3">
+				<p><strong>Rules</strong></p>
+				<p>As you are engaged in the run you need to be sure that the foods that you decide to eat are beneficial to your overall health.</p>
+			  <p> For example: if you eat foods that are fun to eat but do not eat anything except these &quot;red&quot; type foods, then your character will become slow and fat! </p>
+				<p>For example: if you eat too many &quot;green&quot; type foods, then your characyer will become slow and tired!</p>
+				<p>For example: if you eat a <u><strong>balance</strong></u> (indicated by the nutrition bar) of &quot;green&quot; and &quot;red&quot; type foods then you will reach the coveted maximum balance. </p>
+			</div>
+            <div class="tabs-pane" id="tab4">
+				<p><strong>Scoring</strong></p>
+				<p>The best part of a game is definitely the scoring! In order  to score higher in Eat n' Run: Lunch Lady Madness you need to maintain a  healthy balance in addition to running as far as you can. </p>
+                <p>The more you play the better you will become at making  healthy eating choices, even more, you will score higher and be able to rule  the leaderboards!</p>
+            </div>
+		</div>
+
+	</section>
+
+		<div class="tabs" align="center">
+		<!-- Javascript -->
+	<script src="js/buoy.js"></script>
+	<script src="js/tabby.js"></script>
+	<script>
+		tabby.init({
+			toggleActiveClass: 'active',
+			contentActiveClass: 'active',
+			initClass: 'js-tabby',
+			callbackBefore: function ( toggle, tabID ) {},
+			callbackAfter: function ( toggle, tabID ) {}
+		});
+	</script>
+
+</body>
+</html>
