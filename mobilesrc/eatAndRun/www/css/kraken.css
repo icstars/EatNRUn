@@ -78,7 +78,6 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background: ##66cdcc;
   font-size: 75%;
   font: inherit;
   vertical-align: baseline;
@@ -409,7 +408,6 @@ dt {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: normal;
-  margin-bottom: 1em;
   padding-top: 1em;
   word-wrap: break-word;
 }

@@ -73,6 +73,7 @@ body {
 .buttons button {
     height: 3em;
     width: 6em;
+    background-color: #EABD2D;
 }
 h1 {
     font-size:64px;
