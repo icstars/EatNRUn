@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Eat N' Run</title>
+<head>
+<style type="text/css"></style>
+<style type="text/css"></style>
+<link href="css/kraken.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.slider.min.css" rel="stylesheet" type="text/css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="jQueryAssets/jquery-ui-1.9.2.slider.custom.min.js" type="text/javascript"></script>
+	
+<style>
+		@-webkit-viewport { width: device-width; zoom: 1.0; }
+		   @-moz-viewport { width: device-width; zoom: 1.0; }
+			@-ms-viewport { width: device-width; zoom: 1.0; }
+			 @-o-viewport { width: device-width; zoom: 1.0; }
+				@viewport { width: device-width; zoom: 1.0; }
+
+		html { overflow-y: auto; }
+
+		img, audio, video, canvas { max-width: 100%; }
+		
+		.container {
+			max-width: 40em;
+			width: 88%;
+			margin-left: auto;
+			margin-right: auto;}
+
+#music {
+	margin-bottom: 60px;}
+
+</style>
+
+</head>
+
+<body>
+<section class="container">
+	<h1 style="text-align: center; font-size: 3em;">Sound Menu</h1>
+	<div class="sliders" align="center">
+	 <p>Volume</p>
+        <p><div id="Slider1"></div></p>
+        <p><div class="float-left"><strong>Mute</strong></div><div id="vol" class="float-right"><strong>High</strong></div></p>
+      <p>Sound FX</p>
+		<p><div id="Slider2"></div></p>
+        <p><div class="float-left"><strong>Mute</strong></div><div id="fx" class="float-right"><strong>High</strong></div></p>
+      <p>Music</p>
+       	<p><div id="Slider3"></div></p>
+		<p><div class="float-left"><strong>Mute</strong></div><div id="music" class="float-right"><strong>High</strong></div></p>
+    </div>
+</section>
+
+<audio id="fault" src="Fault.mp3" preload="auto" autoplay loop></audio>
+
+<script>
+$(function() {	
+	$( "#Slider1" ).slider({ 
+		min: 0, 
+		max: 100, 
+		value: 1,
+		slide: function() {
+			document.getElementById("  ").volume = ($(this).slider("value")/100);
+		}
+	});
+	
+	$( "#Slider2" ).slider({ 
+		min: 0, 
+		max: 100, 
+		value: 1,
+		slide: function() {
+			document.getElementById("  ").volume = ($(this).slider("value")/100);
+		}
+	});
+
+	$( "#Slider3" ).slider({ 
+		min: 0, 
+		max: 100, 
+		value: 1,
+		slide: function() {
+			document.getElementById("fault").volume = ($(this).slider("value")/100);
+		}
+	});
+
+
+	
+
+});
+</script>
+
+<div><p>Back</p></div>
+</body>
+</html>
