@@ -1,3 +1,188 @@
+<<<<<<< HEAD
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#FF0000;
+    background-image:linear-gradient(top, #FF0000 0%, #FF0000 51%);
+    background-image:-webkit-linear-gradient(top, #FF0000 0%, #FF0000 51%);
+    background-image:-ms-linear-gradient(top, #FF0000 0%, #FF0000 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #FF0000),
+        color-stop(0.51, #FF0000 )
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+    }
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 90px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#111111;
+    display:block;
+}
+
+.event.received {
+    background-color:#FF0000;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 1000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+}
+#menu {
+    width: 550px;
+    height: 35px;
+    font-size: 16px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 3px 2px 3px #333333;
+    background-color: #8AD9FF;
+        border-radius: 8px;
+}
+
+#menu ul {
+    height: auto;
+    padding: 8px 0px;
+    margin: 0px;
+}
+#menu li { 
+display: inline; 
+padding: 20px; 
+}
+
+#menu a {
+    text-decoration: none;
+    color: #00F;
+    padding: 8px 8px 8px 8px;
+}
+#menu a:hover {
+    color: #F90;
+    background-color: #FFF;
+}
+#div-1 {
+ position:relative;
+}
+#div-1a {
+ position:absolute;
+ bottom:50;
+ left:0;
+}
+#div-1b {
+ position:absolute;
+ bottom:50;
+ right:0;
+}
+$(document).ready(function() {
+  $("p").hover(
+    function() {
+      $(this).css({"color": "purple", "font-weight" : "bolder"});
+    },
+    function() {
+      $(this).css({"color": "black", "font-weight" : ""});
+    }
+  ); 
+  $("p").click(function (event) {
+    var element = $(this);
+    var elementID = event.target.id;
+    var oggVar = (elementID +".ogg");   
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', oggVar); 
+    audioElement.load();
+    audioElement.addEventListener("load", function() { 
+        audioElement.play(); 
+    }, true);
+    audioElement.play();    
+  }); 
+});
+=======
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -71,25 +256,43 @@ body {
 }
 
 .buttons button {
-    height: 3em;
-    width: 6em;
-    background-color: #EABD2D;
+    font-size: 24px;
+    padding: 20px 25px;
 }
+
 h1 {
     font-size:64px;
     font-weight:bold;
-    color: #9900FF;
+    color: #1a1a97; 
     font-family: Rockwell;
     margin:0px;
     overflow:visible;
     padding:0px;
     text-align:center;
+    text-shadow:
+    0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
 }
 
 h3 {
     font-size:40px;
     font-weight:bold;
-    color: #FF6600;
+    color: #DBCF38;
+    text-shadow: black 0.1em 0.1em 0.2em;
     font-family: Fantasy;
     margin:0px;
     ocerflow:visible;
@@ -132,3 +335,4 @@ h3 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+>>>>>>> 14ea0e68b5059d3daeee2df8a5826f50a3bcca8c
