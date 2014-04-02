@@ -24,16 +24,16 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-color:#FF0000;
+    background-image:linear-gradient(top, #FF0000 0%, #FF0000 51%);
+    background-image:-webkit-linear-gradient(top, #FF0000 0%, #FF0000 51%);
+    background-image:-ms-linear-gradient(top, #FF0000 0%, #FF0000 51%);
     background-image:-webkit-gradient(
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
+        color-stop(0, #FF0000),
+        color-stop(0.51, #FF0000 )
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
@@ -43,7 +43,7 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
-}
+    }
 
 /* Portrait layout (default) */
 .app {
@@ -83,17 +83,17 @@ h1 {
     -webkit-border-radius:4px;
     color:#FFFFFF;
     font-size:12px;
-    margin:0px 30px;
+    margin:0px 90px;
     padding:2px 0px;
 }
 
 .event.listening {
-    background-color:#333333;
+    background-color:#111111;
     display:block;
 }
 
 .event.received {
-    background-color:#4B946A;
+    background-color:#FF0000;
     display:none;
 }
 
@@ -110,6 +110,74 @@ h1 {
 }
  
 .blink {
-    animation:fade 3000ms infinite;
+    animation:fade 1000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+}
+#menu {
+    width: 550px;
+    height: 35px;
+    font-size: 16px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 3px 2px 3px #333333;
+    background-color: #8AD9FF;
+        border-radius: 8px;
+}
+
+#menu ul {
+    height: auto;
+    padding: 8px 0px;
+    margin: 0px;
+}
+#menu li { 
+display: inline; 
+padding: 20px; 
+}
+
+#menu a {
+    text-decoration: none;
+    color: #00F;
+    padding: 8px 8px 8px 8px;
+}
+#menu a:hover {
+    color: #F90;
+    background-color: #FFF;
+}
+#div-1 {
+ position:relative;
+}
+#div-1a {
+ position:absolute;
+ bottom:50;
+ left:0;
+}
+#div-1b {
+ position:absolute;
+ bottom:50;
+ right:0;
+}
+$(document).ready(function() {
+  $("p").hover(
+    function() {
+      $(this).css({"color": "purple", "font-weight" : "bolder"});
+    },
+    function() {
+      $(this).css({"color": "black", "font-weight" : ""});
+    }
+  ); 
+  $("p").click(function (event) {
+    var element = $(this);
+    var elementID = event.target.id;
+    var oggVar = (elementID +".ogg");   
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', oggVar); 
+    audioElement.load();
+    audioElement.addEventListener("load", function() { 
+        audioElement.play(); 
+    }, true);
+    audioElement.play();    
+  }); 
+});
