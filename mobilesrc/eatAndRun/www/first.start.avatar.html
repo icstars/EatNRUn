@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<style type="text/css"></style>
-<style type="text/css"></style>
+
 <style type="text/css"></style>
 <link rel="stylesheet" href="css/kraken.css" type="text/css">
 <link rel="stylesheet" href="css/tabby-css.css" type="text/css">
@@ -44,12 +43,9 @@
 
 <body>
 	<section class="container">
-		<h1 style="text-align: center; font-size: 3em;">Eat N' Run</h1>
-		<h3 style="text-align: center; font-size: 1.5em;">hLunch Lady Madness</h3>
-
-
+		<h1 style="text-align: center; font-size: 3em;">Select character		</h1>
 		<div class="tabs" align="center">
-		    <button data-tab="#tab1">Jello Kid</button>
+		  <button data-tab="#tab1">Jello Kid</button>
 			<button data-tab="#tab2">Jello Kid</button>
 			<button data-tab="#tab3">Jello Kid</button>
             <button data-tab="#tab4">Jello Kid</button>
@@ -59,26 +55,29 @@
 		<div class="tabs-content">
 			<div align="center" class="tabs-pane active" id="tab1">
 				<p><strong>Runner 1</strong></p>
-				<p><img src="img/jellokid.png" alt="Runner 1" width="50" height="70"/></p>
+				<p>
+					<div id="adiv"><button>Run!!</button></div><a href="javascript:hideshow(document.getElementById('adiv'))"><img src="img/jellokid.png" alt="Runner 1" width="50" height="70"/></a></p>
 				<p>Jello Kid is a student that likes to run. <strong>High Score: 0</strong></p>
 			</div>
 
 			<div align="center" class="tabs-pane" id="tab2">
 				<p><strong>UNLOCK ME</strong></p>
-				<p><img src="img/jellokido.png" alt="Runner 2" width="50" height="70"/></p>
+				<p>
+					<div id="adiv"><button>Run!!</button></div><a href="javascript:hideshow(document.getElementById('adiv'))"><img src="img/jellokido.png" alt="Runner 2" width="50" height="70"/></a></p>
 			</div>
 
 			<div align="center" class="tabs-pane" id="tab3">
 				<p><strong>UNLOCK ME</strong></p>
-				<p><img src="img/jellokidy.png" alt="Runner 3" width="50" height="70"/></p>
+				<p>
+					<div id="adiv"><button>Run!!</button></div><a href="javascript:hideshow(document.getElementById('adiv'))"><img src="img/jellokidy.png" alt="Runner 3" width="50" height="70"/></a></p>
 			</div>
             <div align="center" class="tabs-pane" id="tab4">
 				<p><strong>UNLOCK ME</strong></p>
-				<p><img src="img/jellokidb.png" alt="Runner 4" width="50" height="70"/></p>
+				<p><div id="adiv"><button>Run!!</button></div><a href="javascript:hideshow(document.getElementById('adiv'))"><img src="img/jellokidb.png" alt="Runner 4" width="50" height="70"/></a></p>
             </div>
             <div align="center" class="tabs-pane" id="tab5">
 				<p><strong>UNLOCK ME</strong></p>
-				<p><img src="img/jellokidi.png" alt="Runner 5" width="50" height="70"/></p>
+				<p><div id="adiv"><button>Run!!</button></div><a href="javascript:hideshow(document.getElementById('adiv'))"><img src="img/jellokidi.png" alt="Runner 5" width="50" height="70"/></a></p>
             </div>
 		</div>
 
@@ -86,9 +85,20 @@
  			<div align="float:left">
             	<a href="gamestart.html"> Play </a><p>
            		<a href="index.html"> Home </a>
-        	</div>
-			<div class="tabs" align="center">
-		<!-- Javascript -->
+</div>
+<!-- Javascript -->
+<!--make object show/hide on click-->	
+	<script type="text/javascript">
+function hideshow(which){
+if (!document.getElementById)
+return
+if (which.style.display=="block")
+which.style.display="none"
+else
+which.style.display="block"
+}
+</script>
+<!-- end show hide onclick -->
 	<script src="js/buoy.js"></script>
 	<script src="js/tabby.js"></script>
 	<script>
