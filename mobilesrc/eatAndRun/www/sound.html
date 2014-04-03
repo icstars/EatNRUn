@@ -54,6 +54,7 @@
     </div>
 </section>
 
+<audio id="fault" src="Fault.mp3" preload="auto" autoplay loop></audio>
 
 <script>
 $(function() {	
@@ -80,7 +81,7 @@ $(function() {
 		max: 100, 
 		value: 1,
 		slide: function() {
-			document.getElementById("  ").volume = ($(this).slider("value")/100);
+			document.getElementById("fault").volume = ($(this).slider("value")/100);
 		}
 	});
 
