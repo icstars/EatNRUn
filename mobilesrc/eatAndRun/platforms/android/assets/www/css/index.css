@@ -72,7 +72,8 @@ body {
 
 .buttons button {
     font-size: 24px;
-    padding: 20px 25px;
+    padding: 5px 25px;
+    min-width: 150px;
 }
 
 h1 {
@@ -103,18 +104,26 @@ h1 {
     8px 7px 0px #5dabcd;
 }
 
-h3 {
+h3,h4,h5{
     font-size:40px;
     font-weight:bold;
     color: #DBCF38;
     text-shadow: black 0.1em 0.1em 0.2em;
     font-family: Fantasy;
     margin:0px;
-    ocerflow:visible;
+    overflow:visible;
     padding:0px;
     text-align:center;
 }
 
+h4 {
+    font-size:30px;   
+}
+
+h5 {
+    color: #5DB216;
+    font-size: 25px;
+}
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
