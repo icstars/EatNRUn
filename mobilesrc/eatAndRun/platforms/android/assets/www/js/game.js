@@ -31,26 +31,14 @@ function increase(inc)
 	console.log("Width: " + perc);
 }
 
+var background_position = 0;
 
+function move_background()
+{
+	background_position = background_position - 4;
+	$('body').css("background-position-x", background_position);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$(function(){
+	setInterval(move_background, 37);
+});
