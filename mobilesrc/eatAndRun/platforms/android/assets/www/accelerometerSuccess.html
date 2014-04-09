@@ -1,0 +1,25 @@
+<html>
+<title>
+Accelerometer
+</title>
+<head>
+</head>
+<body>
+<!--arguments-->
+
+<!--accelerometerSuccess -->
+function onSuccess(acceleration) {
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
+};
+<!-- accelerometerError onError callback function for acceleration functions.
+
+-->
+function() {
+    // Handle the error
+}
+
+</body>
+</html>
