@@ -1,5 +1,3 @@
-.game-screen {
-	height: 750px;
+body {
 	background-image:url(../img/background.png);
-<!--md-->
-};
+}
