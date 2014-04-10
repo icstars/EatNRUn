@@ -1,3 +1,5 @@
+/*Decreasing progress bar*/
+
 function decrease(dec)
 {
 	var gw = $('.greenbar').width();
@@ -13,8 +15,7 @@ $('.greenbar').css('width', perc+"%");
 	console.log("width: " + perc);
 }
 
-
-
+/*Increasing progress bar*/
 
 function increase(inc)
 {
@@ -30,6 +31,8 @@ function increase(inc)
 	$('.greenbar').css('width', perc+"%");
 	console.log("Width: " + perc);
 }
+
+/* Moving background*/
 
 var background_position = 0;
 
