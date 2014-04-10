@@ -12,8 +12,8 @@ button {
 	background-image: -o-linear-gradient(top, rgb(75,105,235) 50%, rgb(52,68,147));
 	background-image: linear-gradient(top, rgb(75,105,235) 50%, rgb(52,68,147));
 	
-    border: 1px solid #0b1319;
-    color: #160470;
+    border: 1px solid #123c5c;
+    color: #d3dfe8;
     font-size: 14px;
     font-weight: bold;
     border-radius: 3px;
