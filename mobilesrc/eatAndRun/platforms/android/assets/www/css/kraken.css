@@ -928,3 +928,27 @@ select:focus {
     page-break-inside: avoid;
   }
 }
+
+#tab1 {
+  font-size:18px;
+  font-family:Helvetica, Roboto;
+
+}
+
+#tab2 {
+  font-size:18px;
+  font-family:Helvetica, Roboto;
+
+}
+
+#tab3 {
+  font-size:18px;
+  font-family:Helvetica, Roboto;
+
+}
+
+#tab4 {
+  font-size:18px;
+  font-family:Helvetica, Roboto;
+
+}
