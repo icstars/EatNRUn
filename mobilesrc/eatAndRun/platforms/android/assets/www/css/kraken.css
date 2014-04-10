@@ -77,7 +77,7 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Helvetica;
   font-size: 75%;
   font: inherit;
   vertical-align: baseline;
@@ -338,7 +338,7 @@ div.hide
 /*  Colors
  *  For alternate text colors */
 .text-muted {
-  color: gray;
+  color: blue;
 }
 
 /*  Links
@@ -559,10 +559,10 @@ pre code {
   border: 0;
 }
 
-/* =============================================================
+/* =============================================================*/
 	BUTTONS
 	Styling for CSS buttons.
- * ============================================================= */
+ * 
 .btn {
   display: inline-block;
   font-size: 3em;
@@ -679,15 +679,15 @@ input[type="button"].btn-block {
   padding-left: 0;
 }
 
-button,
+/*button,
 .btn {
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
-  /* Override default Webkit/Firefox button styling */
+  /* Override default Webkit/Firefox button styling 
   background-image: none;
   -webkit-appearance: none;
-}
+}*/
 
 .btn:last-child,
 input.btn {
@@ -720,7 +720,7 @@ select {
   width: 100%;
   font: inherit;
   line-height: 1.5;
-  color: #555555;
+  color: #ffffff;
   margin-bottom: 1.1875em;
   padding: 0.3125em;
   border: 0.0725em solid #b8b8b8;
