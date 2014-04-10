@@ -1,5 +1,32 @@
+html {  height: 100%;}
+
 body {
 	background-image:url(../img/finalbackground.png);
 	background-size: 100%;
 	background-position: relative;
+    height: 100%;
+}
+
+.avatarContainer {
+    height: 200px;
+    width: 100px;
+    background-color: BLUE;
+    position: absolute;
+    bottom: 0px;
+}
+
+.fruitContainer {
+    height: 100px;
+    width: 100px;
+    background-color: GREEN;
+    position: absolute;
+    right: 0px;
+}
+
+.topLane {
+    bottom: 150px;
+}
+
+.bottomLane {
+    bottom: 0px;
 }
