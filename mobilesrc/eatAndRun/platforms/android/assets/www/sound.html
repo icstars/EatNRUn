@@ -4,7 +4,6 @@
 <head>
 <style type="text/css"></style>
 <link href="css/kraken.css" rel="stylesheet" type="text/css">
-<link href="css/index.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.slider.min.css" rel="stylesheet" type="text/css">
@@ -39,14 +38,12 @@
 
 <body>
 <section class="container">
-	<h1 style="text-align: center; font-size: 3em;">Sound Menu</h1>
+	
 	<div class="sliders" align="center">
-	 <p>Volume</p>
-        <p><div id="Slider1"></div></p>
-        <p><div class="float-left"><strong>Mute</strong></div><div id="vol" class="float-right"><strong>High</strong></div></p>
+	<img src="img/sound.png"/><br></br>
       <p>Sound FX</p>
 		<p><div id="Slider2"></div></p>
-        <p><div class="float-left"><strong>Mute</strong></div><div id="fx" class="float-right"><strong>High</strong></div></p>
+        <p><div class="float-left"><strong>Mute</strong></div><div id="fx" class="float-right"><strong>High</strong></div></p><br></br>
       <p>Music</p>
        	<p><div id="Slider3"></div></p>
 		<p><div class="float-left"><strong>Mute</strong></div><div id="music" class="float-right"><strong>High</strong></div></p>
@@ -55,14 +52,6 @@
 
 <script>
 $(function() {	
-	$( "#Slider1" ).slider({ 
-		min: 0, 
-		max: 100, 
-		value: 1,
-		slide: function() {
-			document.getElementById("  ").volume = ($(this).slider("value")/100);
-		}
-	});
 	
 	$( "#Slider2" ).slider({ 
 		min: 0, 
@@ -88,6 +77,6 @@ $(function() {
 });
 </script>
 
-<div><a href="options.html">Back</a></div>
+<div align="float:left"> <a href="index.html"><img src="img/backarrow.png" alt="back arrow" height="50" width="50"/></a></div>
 </body>
 </html>
