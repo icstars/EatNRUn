@@ -105,7 +105,7 @@ var fruitMap = {0: {name: "Broccoli", healthValue: 20},
 $(document).ready(function () {
     game = new Game(1);
     avatar = new Avatar(true);
-   // tickinterval = setInterval(move_background, 15);
+    tickinterval = setInterval(move_background, 15);
     for(var i = 0; i<10; i++){
         var fruitIdx = Math.floor(Math.random() * 4);
         var food = new Food(fruitMap[fruitIdx]);
