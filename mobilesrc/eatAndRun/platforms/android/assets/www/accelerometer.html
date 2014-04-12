@@ -4,10 +4,9 @@
     <title>Acceleration Example</title>
 <style type="text/css"></style>
 <link rel="stylesheet" href="css/edit.css" type="text/css">
-<link rel="stylesheet" href="css/kraken.css" type="text/css">
-<link rel="stylesheet" href="css/tabby-css.css" type="text/css">
+<link rel="stylesheet" href="css/tableped.css" type="text/css">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/cordova-2.1.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // The watch id references the current `watchAcceleration`
@@ -61,7 +60,23 @@
     </script>
   </head>
   <body>
-    <div id="accelerometer">Waiting for accelerometer...</div>
-    <button onclick="stopWatch();">Stop Watching</button>
+     <div align="center"><img src="img/steps.png" width="195" height="51" alt=""/><br>
+  </div>
+  <div align="center" class="tableped">
+    <table width="524">
+                    <tr style="text-align: center">
+                        <td width="152">TOTAL STEPS</td>
+                        <td width="150" >TOTAL MILES</td>
+                        <td width="200">CALORIES BURNED</td>
+                    </tr>
+                    <tr>
+                        <td id="accelerometer">Waiting for steps...</td>
+                        <td>Value</td>
+                        <td>Value</td>
+                    </tr>
+                </table>
+
+  </div><div align="center"><button onclick="stopWatch();">Stop Watching</button></div>
+  <div align="left"> <a href="options.html"><img src="img/backarrow.png" alt="back arrow" height="50" width="50"/></a></div>
   </body>
 </html>
