@@ -15,41 +15,36 @@ body {
     bottom: 0px;
 }
 
+.food{
+   height: 44px; 
+   width: 44px;
+   position: absolute;
+}
+
 #cheese {
-    height: 44px;
-    width: 44px;
-    position: absolute;
     right: 40px;
     bottom:50px;
 }
 #celery {
-    height: 44px;
-    width: 44px;
-    position: absolute;
     right: 300px;
     bottom:10px;
 }
 #pop {
-    height: 44px;
-    width: 44px;
-    position: absolute;
     right:-50px;
     bottom:30px;
 }
-#burger{
-    height: 44px;
-    width: 44px;
-    position: absolute;
+#hamburger{
     right:-300px;
-    bottom:70px;
+    bottom:60px;
 }
 #chicken{
-    height: 44px;
-    width: 44px;
-    position: absolute;
     right:200px;
-    bottom:70px;
+    bottom:40px;
+}
 
+#milk{
+    right:100px;
+    bottom:70px;
 }
 
 .topLane {
