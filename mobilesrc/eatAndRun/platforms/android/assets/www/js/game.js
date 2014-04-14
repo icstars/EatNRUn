@@ -76,13 +76,30 @@ function move_background()
 {
 	background_position = background_position - game.horizontalDelta;
 	$('body').css("background-position-x", background_position);
-    $(".fruitContainer").css({"right": "+="+game.horizontalDelta});
-    var left_offset = $(".fruitContainer").offset().left;
+    /*$("#cheese").css({"right": "+="+game.horizontalDelta});
+    var left_offset = $("#cheese").offset().left;
     if( left_offset < avatar_edge) {
         clearInterval(tickinterval);
-        $(".fruitContainer").remove();
-    }
+        $("#cheese").remove();
+       
+    }*/
+    move_food("cheese");
+    move_food("celery");
+    move_food("pop");
+    move_food("burger");
+    move_food("chicken");
 
+
+}
+
+function move_food(id){
+    $("#"+id).css({"right": "+="+game.horizontalDelta});
+    var left_offset = $("#"+id).offset().left;
+    if( left_offset < avatar_edge) {
+        //clearInterval(tickinterval);
+        $("#"+id).remove();
+        return;
+    }
 }
 
 $(function(){
@@ -96,10 +113,35 @@ var tickinterval;
 var game;
 var avatar;
 
-var fruitMap = {0: {name: "Broccoli", healthValue: 20},
-                1: {name: "Carrot", healthValue: 20},
-                2: {name: "Pizza", healthValue: 40},
-                3: {name: "Beer", healthValue: -20}};
+var fruitMap = {1: {name: "Pizza",healthValue: -40},
+                2: {name: "Hamburger",healthValue: -20},
+                3: {name: "Chicken",healthValue:-20},
+                4: {name: "Soda",healthValue: -20},
+                5: {name: "Candy",healthValue: -20},
+                6: {name: "Chips", healthValue: -20},
+                7: {name: "Ice cream",healthValue:-20},
+                8: {name: "Broccoli",healthValue: 20},
+                9: {name: "Carrot",healthValue: 20},
+                10:{name: "Lettuce", healthValue: 20},
+                11:{name: "Fruit Punch", healthValue: 20},
+                12:{name: "Eggs", healthValue: 20},
+                13:{name: "Milk", healthValue: 20},
+                14:{name: "Cheese", healthValue: 20},
+                15:{name: "Celery", healthValue: 20},
+                16:{name: "Banana", healthValue: 20},
+                17:{name: "Peanuts", healthValue: 20}};
+            
+
+
+
+
+
+
+
+
+
+
+
 
 
 $(document).ready(function () {

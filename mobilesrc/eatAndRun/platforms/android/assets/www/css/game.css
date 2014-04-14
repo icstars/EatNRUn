@@ -15,16 +15,45 @@ body {
     bottom: 0px;
 }
 
-.fruitContainer {
-    height: 100px;
-    width: 100px;
-    background-color: GREEN;
+#cheese {
+    height: 44px;
+    width: 44px;
     position: absolute;
-    right: 0px;
+    right: 40px;
+    bottom:50px;
+}
+#celery {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    right: 300px;
+    bottom:10px;
+}
+#pop {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    right:-50px;
+    bottom:30px;
+}
+#burger{
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    right:-300px;
+    bottom:70px;
+}
+#chicken{
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    right:200px;
+    bottom:70px;
+
 }
 
 .topLane {
-    bottom: 150px;
+    bottom: 50px;
 }
 
 .bottomLane {
