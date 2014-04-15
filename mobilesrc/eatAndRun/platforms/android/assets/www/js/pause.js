@@ -6,16 +6,19 @@ $(document).ready(function(){
         var scrollTop = $(window).scrollTop(); //grab the px value from the top of the page to where you're scrolling
         $('.overlay-bg').show().css({'height' : docHeight}); //display your popup and set height to the page height
         $('.overlay-content').css({'top': scrollTop+20+'px'}); //set the content 20px from the window top
-    });
+		game.pause();
+		});
  
     // hide popup when user clicks on close button
     $('.close-btn').click(function(){
         $('.overlay-bg').hide(); // hide the overlay
+		game.start();
     });
  
     // hides the popup if user clicks anywhere outside the container
     $('.overlay-bg').click(function(){
         $('.overlay-bg').hide();
+		game.start();
     })
     // prevents the overlay from closing if user clicks inside the popup overlay
     $('.overlay-content').click(function(){
