@@ -1,0 +1,16 @@
+= form_for @decision do |f|
+  - if @decision.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@decision.errors.count, "error")} prohibited this decision from being saved:"
+      %ul
+        - @decision.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :player
+    = f.text_field :player
+  .field
+    = f.label :food
+    = f.text_field :food
+  .actions
+    = f.submit 'Save'

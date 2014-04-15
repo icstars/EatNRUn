@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Player:
+  = @decision.player
+%p
+  %b Food:
+  = @decision.food
+
+= link_to 'Edit', edit_decision_path(@decision)
+\|
+= link_to 'Back', decisions_path

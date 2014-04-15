@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  avatar_id: 1
+  current_score: 1
+  name: MyString
+
+two:
+  avatar_id: 1
+  current_score: 1
+  name: MyString
