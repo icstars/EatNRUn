@@ -67,3 +67,19 @@ Phone/main/src/com/discover/mobile/login/LoginActivity.java.LOCAL.8438.java
 
 Phone/main/src/com/discover/mobile/login/LoginActivity.java.REMOTE.8438.java
 Phone/main/src/com/discover/mobile/login/LoginActivity.java.orig
+
+# Ignore bundler config.
+/.bundle
+/vendor/bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+~$*
+cmd.lnk
+*Thumbs.db
+*.class
