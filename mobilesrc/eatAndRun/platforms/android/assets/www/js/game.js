@@ -164,8 +164,9 @@ $(function () {
 var tickinterval;
 var game;
 var avatar;
-
-var foodMap = {1: {name: "Pizza", healthValue: -40, imgSrc:"img/smpizza.png"},
+//images on foodmap coorelate with name//
+var foodMap = {
+    1: {name: "Pizza", healthValue: -40, imgSrc:"img/smpizza.png"},
     2: {name: "Burger", healthValue: -20, imgSrc:"img/smburger.png"},
     3: {name: "Chicken", healthValue: -20, imgSrc:"img/smchicken.png"},
     4: {name: "Pop", healthValue: -20, imgSrc:"img/smpop.png"},
