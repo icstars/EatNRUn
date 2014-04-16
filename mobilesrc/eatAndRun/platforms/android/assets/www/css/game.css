@@ -59,3 +59,11 @@ html, body, .main-content{
 .bottomLane {
     bottom: 0px;
 }
+#tick {
+    font-size: 20px;
+    color: blue;
+    width:100px;
+    height:50px;
+    border: 1px dashed #d3dfe8;
+    background-color: #8ce4ec;
+}
