@@ -36,7 +36,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should update player" do
     patch :update, id: @player, player: { avatar_id: @player.avatar_id, name: @player.name }
-    assert_redireccted_to player_path(assigns(:player))
+    assert_redirected_to player_path(assigns(:player))
   end
 
   test "should destroy player" do

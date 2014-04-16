@@ -2,10 +2,8 @@
 
 one:
   avatar_id: 1
-  current_score: 1
   name: MyString
 
 two:
   avatar_id: 1
-  current_score: 1
   name: MyString
