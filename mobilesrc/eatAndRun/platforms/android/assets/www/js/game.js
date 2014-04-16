@@ -164,24 +164,25 @@ $(function () {
 var tickinterval;
 var game;
 var avatar;
-
-var foodMap = {1: {name: "Pizza", healthValue: -40, imgSrc:"img/smcheese.png"},
-    2: {name: "Hamburger", healthValue: -20, imgSrc:"img/smburger.png"},
+//images on foodmap coorelate with name//
+var foodMap = {
+    1: {name: "Pizza", healthValue: -40, imgSrc:"img/smpizza.png"},
+    2: {name: "Burger", healthValue: -20, imgSrc:"img/smburger.png"},
     3: {name: "Chicken", healthValue: -20, imgSrc:"img/smchicken.png"},
-    4: {name: "Soda", healthValue: -20, imgSrc:"img/smcheese.png"},
-    5: {name: "Candy", healthValue: -20, imgSrc:"img/smcheese.png"},
-    6: {name: "Chips", healthValue: -20, imgSrc:"img/smcheese.png"},
-    7: {name: "Ice cream", healthValue: -20, imgSrc:"img/smcheese.png"},
-    8: {name: "Broccoli", healthValue: 20, imgSrc:"img/smcheese.png"},
-    9: {name: "Carrot", healthValue: 20, imgSrc:"img/smcheese.png"},
-    10: {name: "Lettuce", healthValue: 20, imgSrc:"img/smcheese.png"},
-    11: {name: "Fruit Punch", healthValue: 20, imgSrc:"img/smcheese.png"},
-    12: {name: "Eggs", healthValue: 20, imgSrc:"img/smcheese.png"},
-    13: {name: "Milk", healthValue: 20, imgSrc:"img/smmilk.png"},
-    14: {name: "Cheese", healthValue: 20, imgSrc:"img/smcheese.png"},
-    15: {name: "Celery", healthValue: 20, imgSrc:"img/smcelery.png"},
-    16: {name: "Banana", healthValue: 20, imgSrc:"img/smcheese.png"},
-    17: {name: "Peanuts", healthValue: 20, imgSrc:"img/smcheese.png"}};
+    4: {name: "Pop", healthValue: -20, imgSrc:"img/smpop.png"},
+    5: {name: "Candy", healthValue: -20, imgSrc:"img/smcandy.png"},
+    6: {name: "Tomato", healthValue: -20, imgSrc:"img/smtomato.png"},
+    7: {name: "Ice cream", healthValue: -20, imgSrc:"img/smicecream.png"},
+    8: {name: "Broccoli", healthValue: 20, imgSrc:"img/smbroccoli.png"},
+    9: {name: "Lettuce", healthValue: 20, imgSrc:"img/smlettuce.png"},
+    10: {name: "Punch", healthValue: 20, imgSrc:"img/smpunch.png"},
+    11: {name: "Eggs", healthValue: 20, imgSrc:"img/smeggs.png"},
+    12: {name: "Milk", healthValue: 20, imgSrc:"img/smmilk.png"},
+    13: {name: "Cheese", healthValue: 20, imgSrc:"img/smcheese.png"},
+    14: {name: "Celery", healthValue: 20, imgSrc:"img/smcelery.png"},
+    15: {name: "Banana", healthValue: 20, imgSrc:"img/smbanana.png"},
+    16: {name: "Peanuts", healthValue: 20, imgSrc:"img/smpeanuts.png"}
+    };
 
 
 $(document).ready(function () {
