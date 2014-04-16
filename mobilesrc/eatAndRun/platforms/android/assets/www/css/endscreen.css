@@ -15,7 +15,7 @@ body {
 }
 
 .overlay-bg {
-	background-image:url( );
+	background-image:url(../img/coach1.png);
 	position: absolute;
 	top: 0;
 	left: 0;
