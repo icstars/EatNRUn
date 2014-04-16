@@ -16,10 +16,12 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    respond_with @player
   end
 
   # GET /players/1/edit
   def edit
+    respond_with @player
   end
 
   # POST /players
@@ -27,35 +29,34 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      redirect_to @player, notice: 'Player was successfully created.'
-    else
-      render action: 'new'
+      flash[:notice] = 'Player was successfully created.'
     end
+    respond_with @player
   end
 
   # PATCH/PUT /players/1
   def update
     if @player.update(player_params)
-      redirect_to @player, notice: 'Player was successfully updated.'
-    else
-      render action: 'edit'
+      flash[:notice] = 'Player was successfully updated.'
     end
+    respond_with @player
   end
 
   # DELETE /players/1
   def destroy
     @player.destroy
-    redirect_to players_url, notice: 'Player was successfully destroyed.'
+    flash[:notice] = 'Player was successfully destroyed.'
+    respond_with @player
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_player
+    @player = Player.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def player_params
-      params.require(:player).permit(:avatar_id, :name)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def player_params
+    params.require(:player).permit(:avatar_id, :name)
+  end
 end

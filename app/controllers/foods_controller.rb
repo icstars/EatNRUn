@@ -8,6 +8,7 @@ class FoodsController < ApplicationController
     respond_with @foods
   end
 
+  # GET /foods/random
   def random
     @food = Food.order("RANDOM()").first
     respond_with @food
@@ -22,10 +23,12 @@ class FoodsController < ApplicationController
   # GET /foods/new
   def new
     @food = Food.new
+    respond_with @food
   end
 
   # GET /foods/1/edit
   def edit
+    respond_with @food
   end
 
   # POST /foods
@@ -33,25 +36,24 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
 
     if @food.save
-      redirect_to @food, notice: 'Food was successfully created.'
-    else
-      render action: 'new'
+      flash[:notice] = 'Food was successfully created.'
     end
+    respond_with @food
   end
 
   # PATCH/PUT /foods/1
   def update
     if @food.update(food_params)
-      redirect_to @food, notice: 'Food was successfully updated.'
-    else
-      render action: 'edit'
+      flash[:notice] = 'Food was successfully updated.'
     end
+    respond_with @food
   end
 
   # DELETE /foods/1
   def destroy
     @food.destroy
-    redirect_to foods_url, notice: 'Food was successfully destroyed.'
+    flash[:notice] = 'Food was successfully destroyed.'
+    respond_with @food
   end
 
   private

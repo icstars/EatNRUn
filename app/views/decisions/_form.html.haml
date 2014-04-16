@@ -7,10 +7,10 @@
           %li= msg
 
   .field
-    = f.label :player
-    = f.text_field :player
+    = f.label :player_id
+    = f.select :player_id, Player.all.map {|p| [p.name, p.id]}
   .field
-    = f.label :food
-    = f.text_field :food
+    = f.label :food_id
+    = f.select :food_id, Food.all.map {|p| [p.name, p.id]}
   .actions
     = f.submit 'Save'
