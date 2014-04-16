@@ -8,22 +8,40 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
-
+   
             <!-- CSS References -->
         <link href="css/healthbar.css" rel="stylesheet" type="text/css"/>
         <link href="css/game.css" rel="stylesheet" type="text/css"/>
         
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-       
-
+        
        <!--md-->
 
-
+<script type="text/javascript" src="js/pause.js"></script>
+	<link href='css/overlaypopup.css' rel='stylesheet' type='text/css'>
     </head>
-    <body>
+    <body style="z-index : 1">
+        <div class="main-content" style="z-index: 100">
+	<!-- Pause Menue -->
+<img src="img/button_black_pause.png" width="50" height="50" class="show-popup" align="right" href="#" alt="pause"/> </div>
+    <div class="overlay-bg">
+	<div class="overlay-content">
+		<div class="container" align="center">
+        <img src="img/eat_logo.png" height="65" width="65"/><br>
+       <img src="img/sublogo.png" height="20" width="155"/>
+         <h4> Total Score: 0 </h4>
+            <button>Resume</button><br>
+            <button>Restart</button><br>
+           <button>Settings</button>
+        </div>
+      </div>
+		<button class="tabs">Close</button>
+	</div>
+</div>
       <div class="progressbar">
         <div class="redbar">
-            <div class="greenbar"></div>
+            <div class="greenbar">
+            </div>
         </div>
       </div>
       <div class="buttons">
@@ -33,7 +51,13 @@
         <button onclick="increase(10);">Increase 10%</button>
       </div>
 
-
-
+        <div class="avatarContainer"></div>
+<!--
+        <img src="img/smcheese.png" id="cheese" class="food">
+        <img src="img/smcelery.png" id="celery" class="food">
+        <img src="img/smpop.png" id="pop" class="food">
+        <img src="img/smburger.png" id="hamburger" class="food">
+        <img src="img/smchicken.png" id="chicken" class="food"> 
+        <img src="img/smmilk.png" id="milk" class="food">-->
     </body>
 </html>

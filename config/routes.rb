@@ -1,4 +1,15 @@
 EatNRUn::Application.routes.draw do
+  resources :decisions
+
+  resources :foods do
+    collection do
+      get :random
+    end
+  end
+
+
+  resources :players
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

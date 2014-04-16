@@ -4,10 +4,9 @@
     <title>Acceleration Example</title>
 <style type="text/css"></style>
 <link rel="stylesheet" href="css/edit.css" type="text/css">
-<link rel="stylesheet" href="css/kraken.css" type="text/css">
-<link rel="stylesheet" href="css/tabby-css.css" type="text/css">
+<link rel="stylesheet" href="css/tableped.css" type="text/css">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/cordova-2.1.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // The watch id references the current `watchAcceleration`
@@ -57,11 +56,119 @@
     function onError() {
         alert('onError!');
     }
+<!-- getCurrentAcceleration Begin-->
+// Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    }
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
+<!-- Get CurrentAcceleration end-->
+
+<!-- Watch Acceleration -->
+ // The watch id references the current `watchAcceleration`
+    var watchID = null;
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the acceleration
+    //
+    function startWatch() {
+
+        // Update acceleration every 3 seconds
+        var options = { frequency: 3000 };
+
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    }
+
+    // Stop watching the acceleration
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.accelerometer.clearWatch(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        var element = document.getElementById('accelerometer');
+        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
+                            'Acceleration Y: ' + acceleration.y + '<br />' +
+                            'Acceleration Z: ' + acceleration.z + '<br />' +
+                            'Timestamp: '      + acceleration.timestamp + '<br />';
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
+<!-- Watch Acceleration End-->
+
+<!--arguments-->
+
+<!--accelerometerSuccess -->
+function onSuccess(acceleration) {
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
+};
+<!-- accelerometerError onError callback function for acceleration functions.
+
+-->
+function() {
+    // Handle the error
+}
 
     </script>
   </head>
   <body>
-    <div id="accelerometer">Waiting for accelerometer...</div>
-    <button onclick="stopWatch();">Stop Watching</button>
+     <div align="center"><img src="img/steps.png" width="195" height="51" alt=""/><br>
+  </div>
+  <div align="center" class="tableped">
+    <table width="524">
+                    <tr style="text-align: center">
+                        <td width="152">TOTAL STEPS</td>
+                        <td width="150" >TOTAL MILES</td>
+                        <td width="200">CALORIES BURNED</td>
+                    </tr>
+                    <tr>
+                        <td id="accelerometer">Waiting for steps...</td>
+                        <td>Value</td>
+                        <td>Value</td>
+                    </tr>
+                </table>
+
+  </div><div align="center"><button onclick="stopWatch();">Stop Watching</button></div>
+  <div align="left"> <a href="options.html"><img src="img/backarrow.png" alt="back arrow" height="50" width="50"/></a></div>
   </body>
 </html>

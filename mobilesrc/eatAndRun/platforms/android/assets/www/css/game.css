@@ -1,5 +1,61 @@
+html {  height: 100%;
+}
+
 body {
 	background-image:url(../img/finalbackground.png);
 	background-size: 100%;
 	background-position: relative;
+    height: 100%;
+}
+
+html, body, .main-content{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.avatarContainer {
+    height: 200px;
+    width: 100px;
+    background-color: BLUE;
+    position: absolute;
+    bottom: 0px;
+}
+
+.food{
+   height: 44px; 
+   width: 44px;
+   position: absolute;
+}
+
+#cheese {
+    right: 40px;
+    bottom:50px;
+}
+#celery {
+    right: 300px;
+    bottom:10px;
+}
+#pop {
+    right:-50px;
+    bottom:30px;
+}
+#hamburger{
+    right:-300px;
+    bottom:60px;
+}
+#chicken{
+    right:200px;
+    bottom:40px;
+}
+
+#milk{
+    right:100px;
+    bottom:70px;
+}
+
+.topLane {
+    bottom: 50px;
+}
+
+.bottomLane {
+    bottom: 0px;
 }
