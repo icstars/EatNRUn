@@ -6,8 +6,8 @@ $(document).ready(function(){
         var scrollTop = $(window).scrollTop(); //grab the px value from the top of the page to where you're scrolling
         $('.overlay-bg').show().css({'height' : docHeight}); //display your popup and set height to the page height
         $('.overlay-content').css({'top': scrollTop+20+'px'}); //set the content 20px from the window top
-		pause();
-        event.stopPropagation();
+		pause(); // pause the game
+        event.stopPropagation(); //stop any further action after initial on click action.
 		});
  
     // hide popup when user clicks on close button
@@ -25,7 +25,15 @@ $(document).ready(function(){
     $('.overlay-content').click(function(){
         return false;
     });
- 
+	$("#resume").click(function(){
+     window.location = "continue.html";    
+	});
+	$("#restart").click(function(){
+     window.location = "game.html";    
+	});
+	$("#options").click(function(){
+     window.location = "options.html";    
+	});
 });
 
 function start() {
@@ -44,7 +52,7 @@ function pause() {
     clearInterval(tickinterval);
 }
 
-function stope() {
+function stop() {
     //Stop game
 
 }
