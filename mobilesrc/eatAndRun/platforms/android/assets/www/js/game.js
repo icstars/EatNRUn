@@ -83,12 +83,12 @@ function move_background() {
 
 var nextId = 10;
 function addNewFood() {
-    var fruitIdx = Math.floor(Math.random() * 17) + 1;
+    var fruitIdx = Math.floor(Math.random() * 16) + 1;
     var foodParams = foodMap[fruitIdx];
     var food = new Food(foodParams);
     food.id = nextId++;
     game.foodList.push(food);
-    var $el = $('<img class="food" src="img/sm'+foodMap[fruitIdx].name+'.png" id="food'+food.id+'">');
+   var $el = $('<img class="food" src="img/sm'+foodMap[fruitIdx].name+'.png" id="food'+food.id+'">');
     $el.css({"bottom": 0, "right": 0});
     $('.main-content').append($el);
 }
