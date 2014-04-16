@@ -72,61 +72,13 @@ Avatar.prototype.moveToBottomLane = function () {
 
 var background_position = 0;
 var avatar_edge = 108;
-var isUpdatingUI = false;
 function move_background() {
-    if (isUpdatingUI) {
-        return;
-    }
-    isUpdatingUI = true;
     background_position = background_position - game.horizontalDelta;
     $('body').css("background-position-x", background_position);
-    /*$("#cheese").css({"right": "+="+game.horizontalDelta});
-     var left_offset = $("#cheese").offset().left;
-     if( left_offset < avatar_edge) {
-     clearInterval(tickinterval);
-     $("#cheese").remove();
-
-     }*/
-
-    /* Refactor move_food so it doesn't rely on hardcoded food names,
-     but instead moves all the food that's currently on the page */
-    /*$cheese = $('<img src="cheese.jpg" id="cheese" class="food"/>
-     foodList = [$cheese, $peanuts]
-
-     tickInterval (function defintion) {
-     if current_tick%10 == 2
-     $('#foodContainer').append(foodList.rand());
-     }*/
-   /* if ($('#cheese').length) {
-        move_food("cheese");
-    }
-    ;
-    if ($('#celery').length) {
-        move_food("celery");
-    }
-    ;
-    if ($('#pop').length) {
-        move_food("pop");
-    }
-    ;
-    if ($('#hamburger').length) {
-        move_food("hamburger");
-    }
-    ;
-    if ($('#chicken').length) {
-        move_food("chicken");
-    }
-    ;
-    if ($('#milk').length) {
-        move_food("milk");
-    }
-    ;*/
     for(var idx = 0; idx < game.foodList.length; idx++){
-        //$("#food"+food.id).css({"right": "+="+ game.horizontalDelta});
         var selector = "food" + game.foodList[idx].id;
         move_food(selector, idx);
     }
-    isUpdatingUI = false;
 }
 
 var nextId = 10;
@@ -136,7 +88,7 @@ function addNewFood() {
     var food = new Food(foodParams);
     food.id = nextId++;
     game.foodList.push(food);
-    var $el = $('<img class="food" src="'+foodMap[fruitIdx].imgSrc+'" id="food'+food.id+'">');
+    var $el = $('<img class="food" src="img/sm'+foodMap[fruitIdx].name+'.png" id="food'+food.id+'">');
     $el.css({"bottom": 0, "right": 0});
     $('.main-content').append($el);
 }
@@ -166,22 +118,22 @@ var game;
 var avatar;
 //images on foodmap coorelate with name//
 var foodMap = {
-    1: {name: "Pizza", healthValue: -40, imgSrc:"img/smpizza.png"},
-    2: {name: "Burger", healthValue: -20, imgSrc:"img/smburger.png"},
-    3: {name: "Chicken", healthValue: -20, imgSrc:"img/smchicken.png"},
-    4: {name: "Pop", healthValue: -20, imgSrc:"img/smpop.png"},
-    5: {name: "Candy", healthValue: -20, imgSrc:"img/smcandy.png"},
-    6: {name: "Tomato", healthValue: -20, imgSrc:"img/smtomato.png"},
-    7: {name: "Ice cream", healthValue: -20, imgSrc:"img/smicecream.png"},
-    8: {name: "Broccoli", healthValue: 20, imgSrc:"img/smbroccoli.png"},
-    9: {name: "Lettuce", healthValue: 20, imgSrc:"img/smlettuce.png"},
-    10: {name: "Punch", healthValue: 20, imgSrc:"img/smpunch.png"},
-    11: {name: "Eggs", healthValue: 20, imgSrc:"img/smeggs.png"},
-    12: {name: "Milk", healthValue: 20, imgSrc:"img/smmilk.png"},
-    13: {name: "Cheese", healthValue: 20, imgSrc:"img/smcheese.png"},
-    14: {name: "Celery", healthValue: 20, imgSrc:"img/smcelery.png"},
-    15: {name: "Banana", healthValue: 20, imgSrc:"img/smbanana.png"},
-    16: {name: "Peanuts", healthValue: 20, imgSrc:"img/smpeanuts.png"}
+    1: {name: "Pizza", healthValue: -40},
+    2: {name: "Burger", healthValue: -20},
+    3: {name: "Chicken", healthValue: -20},
+    4: {name: "Pop", healthValue: -20},
+    5: {name: "Candy", healthValue: -20},
+    6: {name: "Tomato", healthValue: -20},
+    7: {name: "Icecream", healthValue: -20},
+    8: {name: "Broccoli", healthValue: 20},
+    9: {name: "Lettuce", healthValue: 20},
+    10: {name: "Punch", healthValue: 20},
+    11: {name: "Eggs", healthValue: 20},
+    12: {name: "Milk", healthValue: 20},
+    13: {name: "Cheese", healthValue: 20},
+    14: {name: "Celery", healthValue: 20},
+    15: {name: "Banana", healthValue: 20},
+    16: {name: "Peanuts", healthValue: 20}
     };
 
 
@@ -190,12 +142,12 @@ $(document).ready(function () {
     avatar = new Avatar(true);
     tickinterval = setInterval(move_background, 15);
      for(var i = 0; i<10; i++){
-         var fruitIdx = Math.floor(Math.random() * 17) + 1;
+         var fruitIdx = Math.floor(Math.random() * 16) + 1;
          var foodParams = foodMap[fruitIdx];
          var food = new Food(foodParams);
          food.id = i;
          game.foodList.push(food);
-         var $el = $('<img class="food" src="'+foodMap[fruitIdx].imgSrc+'" id="food'+i+'">');
+         var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+i+'">');
          $el.css({"bottom": 0, "right": -(i * 88)});
          $('.main-content').append($el);
      }
