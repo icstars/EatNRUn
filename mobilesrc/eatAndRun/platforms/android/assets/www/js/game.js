@@ -97,10 +97,37 @@ function addNewFood() {
 //in the food list
 function move_food(id, idx) {
     $("#" + id).css({"right": "+=" + game.horizontalDelta});
+    //hit test for food+avatar 
+    var food =$("#"+id);
     var left_offset = $("#" + id).offset().left;
-    if (left_offset < avatar_edge) {
+    var foodposition=food.offset();
+    var foodwidth=food.width();
+    var foodheight=food.height();
+    var foodleft=foodposition.left;
+    var foodtop=foodposition.top;
+    var foodright=foodleft+foodwidth;
+    var foodbottom=foodtop+foodheight;
+
+    
+    var avatar =$(".avatarContainer");
+    var avatarposition=avatar.offset();
+    var avatarwidth=avatar.width();
+    var avatarheight=avatar.height();
+    var avatarleft=avatarposition.left;
+    var avatartop=avatarposition.top;
+    var avatarright=avatarleft+avatarwidth;
+    var avatarbottom=avatartop+avatarheight;
+
+
+    if (foodright>avatarleft && 
+    foodbottom>avatartop &&
+    foodtop<avatarbottom &&
+    foodleft<avatarright)
+     {   
+   // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         game.foodList.splice(idx, 1);
+        console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
     }
