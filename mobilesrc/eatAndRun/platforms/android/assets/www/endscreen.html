@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 
 <html>
+    
     <head>
 
           <meta charset="utf-8"
             <!-- Javascript references -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+          
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+          
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     
 
-            <!-- CSS References -->
-        <link href="css/healthbar.css" rel="stylesheet" type="text/css"/>
+          <!-- CSS References -->
+          
+            <link href="css/healthbar.css" rel="stylesheet" type="text/css"/>
 
-        <link href='css/buston.css' rel='stylesheet' type='text/css'>
+            <link href='css/buston.css' rel='stylesheet' type='text/css'>
         
-        <link href="css/game.css" rel="stylesheet" type="text/css"/>
+            <link href="css/game.css" rel="stylesheet" type="text/css"/>
 
-        <link href='css/endscreen.css' rel='stylesheet' type='text/css'>
+            <link href='css/endscreen.css' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-
-
-       <!--md-->
-      <script>
-
-      </script>
+            <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 
     </head>
 
-    <body>
+        <!-- Background Overlay and Image -->
 
-      <div class="main-content">
-      <div class="overlay-bg">
-      <div class="overlay-content">
-      <div class="container" align="center">
+          <body>
+
+            <div class="main-content">
+            <div class="overlay-bg">
+            <div class="overlay-content">
+            <div class="container" align="center">
       
-      <img src="img/coach1.png" height="200" width="200"/><br>
+              <img src="img/coach1.png" height="200" width="200"/><br>
 
-      <br><a href="continue.html"><button> Continue </button></br>
+        <!-- Overlay Continue Button -->
 
-      </div>
-      </div>
-      </div>
+            <br><a href="continue.html"><button> Continue </button></br>
 
+              </div>
+              </div>
+              </div>
 
+        <!-- Nutrition Bar -->
       
-      <div class="progressbar">
-        <div class="redbar">
-            <div class="greenbar"></div>
-        </div>
+              <div class="progressbar">
+              <div class="redbar">
+              <div class="greenbar"></div>
+                
+                </div>
+                </div>
 
-      </div>
-      <div class="buttons">
-        <button onclick="decrease(5);">decrease 5%</button>
-         <button onclick="decrease(10);">decrease 10%</button>
-        <button onclick="increase(5);">Increase 5%</button>
-        <button onclick="increase(10);">Increase 10%</button>
-      </div>
+              <div class="buttons">
+                
+                <button onclick="decrease(5);">decrease 5%</button>
+                <button onclick="decrease(10);">decrease 10%</button>
+                <button onclick="increase(5);">Increase 5%</button>
+                <button onclick="increase(10);">Increase 10%</button>
+              
+              </div>
 
-        <div class="avatarContainer"></div>
+        <!-- Avatar -->
 
+              <div class="avatarContainer"></div>
 
     </body>
+    
 </html>
