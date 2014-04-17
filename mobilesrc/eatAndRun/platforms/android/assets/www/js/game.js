@@ -83,12 +83,12 @@ function move_background() {
 
 var nextId = 10;
 function addNewFood() {
-    var fruitIdx = Math.floor(Math.random() * 16) + 1;
-    var foodParams = foodMap[fruitIdx];
+    var foodIdx = Math.floor(Math.random() * 16) + 1;
+    var foodParams = foodMap[foodIdx];
     var food = new Food(foodParams);
     food.id = nextId++;
     game.foodList.push(food);
-   var $el = $('<img class="food" src="img/sm'+foodMap[fruitIdx].name+'.png" id="food'+food.id+'">');
+   var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name+'.png" id="food'+food.id+'">');
     $el.css({"bottom": 0, "right": 0});
     $('.main-content').append($el);
 }
@@ -141,14 +141,23 @@ $(document).ready(function () {
     game = new Game(1);
     avatar = new Avatar(true);
     tickinterval = setInterval(move_background, 15);
+//run 10 times from 0 to 9
      for(var i = 0; i<10; i++){
-         var fruitIdx = Math.floor(Math.random() * 16) + 1;
-         var foodParams = foodMap[fruitIdx];
+         //generate random item between 1 and 16
+         var foodIdx = Math.floor(Math.random() * 16) + 1;
+         //get random item from foodmap and store in foodParam
+         var foodParams = foodMap[foodIdx];
+         //create new food object using random item 
          var food = new Food(foodParams);
+         //tells food item slot/position it is in
          food.id = i;
+         //adding food to array of items that will appear
          game.foodList.push(food);
+         //generating img tag for food
          var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+i+'">');
+         //position items on the bottom track off screen based on id number
          $el.css({"bottom": 0, "right": -(i * 88)});
+         //takes image and puts onto html
          $('.main-content').append($el);
      }
 
