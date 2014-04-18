@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;}
+		
+      #container {
+        display: inline-block;
+        width: 1580px;
+        height: 1500px;}
+		
+      #buttons {
+        position: absolute;
+        top: 5px;
+        left: 10px;}
+		
+      #buttons > input {
+        padding: 10px;
+        display: block;
+        margin-top: 5px;}
+		
+      canvas {
+        border: 1px solid;}
+    </style>
+  </head>
+  <body>
+    
+    <div id="container"></div>
+    <div id="buttons">
+      <input type="button" id="start" value="Start">
+      <input type="button" id="stop" value="Stop">
+    </div>
+     <script src="C:\Users\Jeremy\Documents\GitHub\EatNRUn\mobilesrc\eatAndRun\platforms\android\assets\www\js\kinetic-v4.5.0.min.js"></script>
+    <script>
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 578,
+        height: 500});
+		
+      var layer = new Kinetic.Layer();
+      var animations = {
+        walkCycle: [{
+          x: 1,
+          y: 1,
+          width: 222,
+          height: 255}, 
+		  {x: 222,
+          y: 1,
+          width: 222,
+          height: 255}, 
+		  {x: 444,
+          y: 1,
+          width: 222,
+          height: 255}, 
+		  {x: 666,
+          y: 1,
+          width: 222,
+          height: 255}, 
+		  {x: 1,
+          y: 255,
+          width: 222,
+          height: 255},
+		  {x: 222,
+          y: 255,
+          width: 222,
+          height: 255}, 
+		  {x: 444,
+          y: 255,
+          width: 222,
+          height: 255}, 
+		  {x: 666,
+          y: 255,
+          width: 222,
+          height: 255}, 
+		  {x: 1,
+          y: 510,
+          width: 222,
+          height: 255},
+		  {x: 222,
+          y: 510,
+          width: 222,
+          height: 255}, 
+		  {x: 444,
+          y: 510,
+          width: 222,
+          height: 255}, 
+		  {x: 666,
+          y: 510,
+          width: 222,
+          height: 255}, 
+		  {x: 1,
+          y: 765,
+          width: 222,
+          height: 255},
+		  {x: 222,
+          y: 765,
+          width: 222,
+          height: 255}]};
+
+      var imageObj = new Image();
+      imageObj.onload = function() {
+        var art = new Kinetic.Sprite({
+          x: 250,
+          y: 40,
+          image: imageObj,
+          animation: 'walkCycle',
+          animations: animations,
+          frameRate: 20,});
+		  
+        // add the shape to the layer
+        layer.add(art);
+
+        // add the layer to the stage
+        stage.add(layer);
+        //blob.start();
+                
+        document.getElementById('start').addEventListener('click', function() {
+          art.start();     
+          }, false);
+        
+        // Stop animation
+        document.getElementById('stop').addEventListener('click', function() {
+          art.stop();
+        
+          }, false);
+
+        }
+           
+      imageObj.src = "img/runcycle.png";
+    </script>
+   
+  </body>
+</html>
