@@ -126,11 +126,27 @@ function move_food(id, idx) {
      {   
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
+        adjustNB(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
     }
+}
+
+function adjustNB(hVal)
+{
+    var chg = Math.floor(Math.abs((hVal/dividend) * 100));
+
+    if(hVal < 0)
+    {
+        decrease(chg);
+    }
+    else if (hVal > 0)
+    {
+        increase(chg);
+    }
+
 }
 
 $(function () {
@@ -143,23 +159,24 @@ $(function () {
 var tickinterval;
 var game;
 var avatar;
+var dividend = 1280;
 //images on foodmap coorelate with name//
 var foodMap = {
-    1: {name: "Pizza", healthValue: -40},
-    2: {name: "Burger", healthValue: -20},
-    3: {name: "Chicken", healthValue: -20},
-    4: {name: "Pop", healthValue: -20},
-    5: {name: "Candy", healthValue: -20},
-    6: {name: "Tomato", healthValue: -20},
-    7: {name: "Icecream", healthValue: -20},
-    8: {name: "Broccoli", healthValue: 20},
-    9: {name: "Lettuce", healthValue: 20},
-    10: {name: "Punch", healthValue: 20},
-    11: {name: "Eggs", healthValue: 20},
-    12: {name: "Milk", healthValue: 20},
+    1: {name: "Pizza", healthValue: -80},
+    2: {name: "Burger", healthValue: -80},
+    3: {name: "Chicken", healthValue: 20},
+    4: {name: "Pop", healthValue: -160},
+    5: {name: "Candy", healthValue: -160},
+    6: {name: "Tomato", healthValue: 80},
+    7: {name: "Icecream", healthValue: -80},
+    8: {name: "Broccoli", healthValue: 80},
+    9: {name: "Lettuce", healthValue: 40},
+    10: {name: "Punch", healthValue: 40},
+    11: {name: "Eggs", healthValue: 40},
+    12: {name: "Milk", healthValue: 40},
     13: {name: "Cheese", healthValue: 20},
-    14: {name: "Celery", healthValue: 20},
-    15: {name: "Banana", healthValue: 20},
+    14: {name: "Celery", healthValue: 40},
+    15: {name: "Banana", healthValue: 40},
     16: {name: "Peanuts", healthValue: 20}
     };
 
@@ -222,7 +239,7 @@ timeInSecs--;
 }
 else {
 clearInterval(ticker); // stop counting at zero
-//startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+// startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 }
 
 document.getElementById("tick").innerHTML = secs;
