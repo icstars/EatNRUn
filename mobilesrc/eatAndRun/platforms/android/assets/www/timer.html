@@ -1,0 +1,23 @@
+<html>
+<body>
+<script>
+	var starTime=60;
+	var timer;
+	var timeIson=60;
+
+		function decreaseTime(){
+			document.getElementById("txt").value=startTime;
+			startTime=startTime-1;
+			timer=setTimeOut(function(){decreaseTime()},500);
+
+		}
+		function startTimer(){
+			if (!timeIson)
+				{
+				timeIson=59;
+				decreaseTime();
+				}	
+		}
+</script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+// Begin Pause
 $(document).ready(function(){
     // show popup when you click on the link
     $('.show-popup').click(function(event){
@@ -31,9 +32,6 @@ $(document).ready(function(){
 	$("#restart").click(function(){
      window.location = "game.html";    
 	});
-	$("#options").click(function(){
-     window.location = "options.html";    
-	});
 	$("#close").click(function(){
      window.location = "#";    
 	});
@@ -42,6 +40,7 @@ $(document).ready(function(){
 function start() {
     //Start game
     tickinterval = setInterval(move_background, 15);
+    ticker = setInterval(tick,1000);
 
 }
 
@@ -51,14 +50,14 @@ function resume() {
 }
 
 function pause() {
-    //Pause game
     clearInterval(tickinterval);
+    clearTimeout(ticker);
+    //clearInterval(ticker);
 }
 
 function stop() {
     //Stop game
 
 }
-
-
+// End Pause
 

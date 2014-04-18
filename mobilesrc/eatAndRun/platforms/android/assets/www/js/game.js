@@ -222,7 +222,7 @@ timeInSecs--;
 }
 else {
 clearInterval(ticker); // stop counting at zero
-// startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+//startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 }
 
 document.getElementById("tick").innerHTML = secs;
