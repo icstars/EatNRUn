@@ -84,12 +84,11 @@ function move_background() {
 var nextId = 10;
 function addNewFood() {
     var foodIdx = Math.floor(Math.random() * 16) + 1;
-    var foodParams = foodMap[foodIdx];
-    var food = new Food(foodParams);
+    var food = new Food(foodMap[foodIdx]);
     food.id = nextId++;
     game.foodList.push(food);
-   var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name+'.png" id="food'+food.id+'">');
-    $el.css({"bottom": 0, "right": 0});
+    var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name+'.png" id="food'+food.id+'">');
+    switchLanes($el, food.id)
     $('.main-content').append($el);
 }
 
@@ -118,12 +117,11 @@ function move_food(id, idx) {
     var avatarright=avatarleft+avatarwidth;
     var avatarbottom=avatartop+avatarheight;
 
-
     if (foodright>avatarleft && 
     foodbottom>avatartop &&
     foodtop<avatarbottom &&
     foodleft<avatarright)
-     {   
+    {   
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
@@ -137,16 +135,40 @@ function move_food(id, idx) {
 function adjustNB(hVal)
 {
     var chg = Math.floor(Math.abs((hVal/dividend) * 100));
+    var av = $(".avatarContainer");
+    var avPos = av.offset();
+    var avLeft = avPos.left;
 
     if(hVal < 0)
     {
         decrease(chg);
+        console.log(chg);
+        avLeft = avLeft - chg;
+        $(".avatarContainer").animate({'left':avLeft});
     }
     else if (hVal > 0)
     {
         increase(chg);
+        console.log(chg);
+        avLeft = avLeft + chg;
+        $(".avatarContainer").animate({'left':avLeft});
     }
 
+}
+
+function switchLanes(foodObj, i)
+{
+    var laneID = Math.floor(Math.random() * 2) + 1;
+
+    switch(laneID)
+         {
+            case 1:
+             $(foodObj).css({"bottom": 100, "right": -(i * 88)});
+             break;
+            case 2:
+             $(foodObj).css({"bottom": 0, "right": -(i * 88)});
+             break;
+         }
 }
 
 $(function () {
@@ -189,6 +211,7 @@ $(document).ready(function () {
      for(var i = 0; i<10; i++){
          //generate random item between 1 and 16
          var foodIdx = Math.floor(Math.random() * 16) + 1;
+         //var laneID = Math.floor(Math.random() * 2) + 1;
          //get random item from foodmap and store in foodParam
          var foodParams = foodMap[foodIdx];
          //create new food object using random item 
@@ -200,7 +223,7 @@ $(document).ready(function () {
          //generating img tag for food
          var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+i+'">');
          //position items on the bottom track off screen based on id number
-         $el.css({"bottom": 0, "right": -(i * 88)});
+        switchLanes($el, i);
          //takes image and puts onto html
          $('.main-content').append($el);
      }
