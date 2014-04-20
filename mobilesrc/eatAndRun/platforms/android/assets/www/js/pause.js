@@ -51,7 +51,6 @@ function resume() {
 
 function pause() {
     clearInterval(tickinterval);
-    clearTimeout(ticker);
     //clearInterval(ticker);
 }
 
@@ -59,5 +58,7 @@ function stop() {
     //Stop game
 
 }
+
+var ticker;
 // End Pause
 

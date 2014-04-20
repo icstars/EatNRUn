@@ -279,6 +279,7 @@ $(document).ready(function () {
 $(function() {
 var timeInSecs;
 var ticker;
+var remSecs;
 
 function startTimer(secs){
 timeInSecs = parseInt(secs)-1;
@@ -299,4 +300,16 @@ document.getElementById("tick").innerHTML = secs;
 }
 
 startTimer(60);  // 60 seconds 
+
+//Click event for pause button. Remaining time on timer will
+//be stored in remSecs and the timer will stop.
+$("#pauseB").click(function(){
+          remSecs = timeInSecs + 1;
+          clearInterval(ticker);});
+
+//Click event for resume button on pause menu. Remaining time stored
+//in remSecs is used to restart the timer.
+$("#close").click(function(){
+          startTimer(remSecs);
+      });
 });
