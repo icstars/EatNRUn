@@ -13,11 +13,12 @@ html, body, .main-content{
     overflow-x: hidden;
 }
 .avatarContainer {
-    height: 200px;
-    width: 100px;
+    height: 100px;
+    width: 75px;
     background-color: BLUE;
     position: absolute;
-    bottom: 0px;
+    bottom: 0%;
+    left: 45%;
 }
 
 .food{

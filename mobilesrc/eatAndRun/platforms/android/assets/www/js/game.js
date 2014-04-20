@@ -6,6 +6,7 @@ function decrease(dec) {
     var perc = (gw / rw) * 100;
     if (perc >= 0 + dec) {
         var perc = perc - dec;
+        avatarSpeed(perc);
     }
     else {
         perc = 0;
@@ -21,6 +22,7 @@ function increase(inc) {
     var perc = (gw / rw) * 100;
     if (perc <= 100 - inc) {
         var perc = perc + inc;
+        avatarSpeed(perc);
     }
     else {
         perc = 100;
@@ -134,28 +136,25 @@ function move_food(id, idx) {
 
 function adjustNB(hVal)
 {
-    var chg = Math.floor(Math.abs((hVal/dividend) * 100));
-    var av = $(".avatarContainer");
-    var avPos = av.offset();
-    var avLeft = avPos.left;
-
+    var chg = Math.ceil(Math.abs((hVal/DIVIDEND) * 100));
+    
     if(hVal < 0)
     {
         decrease(chg);
         console.log(chg);
-        avLeft = avLeft - chg;
-        $(".avatarContainer").animate({'left':avLeft});
     }
     else if (hVal > 0)
     {
         increase(chg);
         console.log(chg);
-        avLeft = avLeft + chg;
-        $(".avatarContainer").animate({'left':avLeft});
     }
 
 }
 
+
+//switchLanes with a food object and food position as
+//arguments. Will randomly place a food object onto
+//the top or bottom lane. 
 function switchLanes(foodObj, i)
 {
     var laneID = Math.floor(Math.random() * 2) + 1;
@@ -171,6 +170,37 @@ function switchLanes(foodObj, i)
          }
 }
 
+
+//avatarSpeed function with current nutrtrionbar red/green ratio
+//as NBperc. Will move the avatar at certain points on the nutrition
+//bar.
+function avatarSpeed(NBperc)
+{
+
+       if (NBperc >= 0 && NBperc < 10)
+        {
+            $(".avatarContainer").animate({"left": "5%"}, 2000);
+        }    
+        else if (NBperc > 20 && NBperc <= 30)
+        {
+         $(".avatarContainer").animate({"left": "25%"}, 2000);
+        }
+        else if (NBperc > 45 && NBperc <= 55)
+        {
+             $(".avatarContainer").animate({"left": "45%"});
+        } 
+        else if (NBperc > 70 && NBperc <= 80)
+        {
+              $(".avatarContainer").animate({"left": "65%"}, 1000);
+        }
+        else if(NBperc >= 90 && NBperc <= 100)
+         {
+            $(".avatarContainer").animate({"left": "85%"}, 1000);
+         }
+        else
+            return;
+}
+
 $(function () {
 
 });
@@ -181,7 +211,7 @@ $(function () {
 var tickinterval;
 var game;
 var avatar;
-var dividend = 1280;
+var DIVIDEND = 1600;
 //images on foodmap coorelate with name//
 var foodMap = {
     1: {name: "Pizza", healthValue: -80},
