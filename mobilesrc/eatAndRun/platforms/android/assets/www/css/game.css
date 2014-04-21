@@ -12,45 +12,18 @@ html, body, .main-content{
     max-width: 100%;
     overflow-x: hidden;
 }
-.avatarContainer {
-    height: 100px;
-    width: 75px;
-    background-color: BLUE;
+#avabox {
+    height: 175px;
+    width: 150px;
     position: absolute;
     bottom: 0%;
-    left: 45%;
+    right: 45%;
 }
 
 .food{
    height: 44px; 
    width: 44px;
    position: absolute;
-}
-
-#cheese {
-    right: 40px;
-    bottom:50px;
-}
-#celery {
-    right: 300px;
-    bottom:10px;
-}
-#pop {
-    right:-50px;
-    bottom:30px;
-}
-#hamburger{
-    right:-300px;
-    bottom:60px;
-}
-#chicken{
-    right:200px;
-    bottom:40px;
-}
-
-#milk{
-    right:100px;
-    bottom:70px;
 }
 
 .topLane {

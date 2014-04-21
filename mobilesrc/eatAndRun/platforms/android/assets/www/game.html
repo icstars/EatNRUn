@@ -2,9 +2,8 @@
 
 <html>
     <head>
-
-
             <!-- Javascript references -->
+		<script type="text/javascript" src="js/kinetic-v4.5.0.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
@@ -17,13 +16,13 @@
         
        <!--md-->
 
-<script type="text/javascript" src="js/pause.js"></script>
+	<script type="text/javascript" src="js/pause.js"></script>
 	<link href='css/overlaypopup.css' rel='stylesheet' type='text/css'>
     </head>
     <body style="z-index : 1">
 <div class="main-content">
 	<!-- Pause Below -->
-<img src="img/button_black_pause.png" width="50" height="50" class="show-popup" href="#" alt="pause" align="right"     id = "pauseB"/> </div>
+<img src="img/button_black_pause.png" width="50" height="50" class="show-popup" href="#" alt="pause" align="right" id = "pauseB"/> </div>
 <div class="overlay-bg">
 	<div class="overlay-content">
 		<div class="container" align="center">
@@ -44,13 +43,99 @@
       </div>
 	  <div class="timer" align="center"><span id="tick">60</span></div>
       
-        <div class="avatarContainer"></div>
-<!--
-        <img src="img/smcheese.png" id="cheese" class="food">
-        <img src="img/smcelery.png" id="celery" class="food">
-        <img src="img/smpop.png" id="pop" class="food">
-        <img src="img/smburger.png" id="hamburger" class="food">
-        <img src="img/smchicken.png" id="chicken" class="food"> 
-        <img src="img/smmilk.png" id="milk" class="food">-->
+        <div id="avabox"></div>
+<script>
+      var stage = new Kinetic.Stage({ //stage where you stick the layer
+        container: 'avabox', //the id of the stage
+        width: 148,
+        height: 175});
+		
+      var layer = new Kinetic.Layer(); //the layer where the animation lies
+      var animations = { //the function of the different sprites you'll cycle through
+        walkCycle: [{ //placement of sprite on the spritesheet
+          x: 1,
+          y: 1,
+          width: 150,
+          height: 160}, 
+		  {x: 150,
+          y: 1,
+          width: 150,
+          height: 160}, 
+		  {x: 300,
+          y: 1,
+          width: 150,
+          height: 160}, 
+		  {x: 450,
+          y: 1,
+          width: 150,
+          height: 160}, 
+		  {x: 1,
+          y: 175,
+          width: 150,
+          height: 175},
+		  {x: 150,
+          y: 175,
+          width: 150,
+          height: 175}, 
+		  {x: 300,
+          y: 166,
+          width: 150,
+          height: 166}, 
+		  {x: 450,
+          y: 175,
+          width: 150,
+          height: 166},
+		  {x: 1,
+          y: 350,
+          width: 150,
+          height: 166},
+		  {x: 150,
+          y: 350,
+          width: 150,
+          height: 166}, 
+		  {x: 300,
+          y: 350,
+          width: 150,
+          height: 166}, 
+		  {x: 450,
+          y: 350,
+          width: 150,
+          height: 166}, 
+		  {x: 1,
+          y: 525,
+          width: 150,
+          height: 166},
+		  {x: 150,
+          y: 525,
+          width: 150,
+          height: 166}]};
+
+      var imageObj = new Image(); // the sprite sheet 
+      imageObj.onload = function() { //load the image 
+        var art = new Kinetic.Sprite({ //
+          x: 1,
+          y: 1,
+          image: imageObj, //the image of the sprite sheet
+          animation: 'walkCycle', //the name of the cycle
+          animations: animations, //the function 'animations' defined earlier
+          frameRate: 20,}); //frame rate at which the avatar runs
+		  
+        // add the shape to the layer
+        layer.add(art);
+
+        // add the layer to the stage
+        stage.add(layer);
+        art.start(); //makes it run 
+           
+		document.getElementById('pauseB').addEventListener('click', function() {
+          art.stop();     
+          }, false); 	//pauses the animation
+		   
+		document.getElementById('close').addEventListener('click', function() {
+          art.start();     
+          }, false);	//resumes the animation
+		 }	   
+      imageObj.src = 'img/clearjel.png'; //image source		
+    </script>
     </body>
 </html>

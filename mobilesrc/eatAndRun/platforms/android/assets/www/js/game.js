@@ -55,7 +55,6 @@ Food.prototype.renderFood = function () {
 function Game(horizontalDelta) {
     this.horizontalDelta = horizontalDelta;
     this.foodList = [];
-    this.score = 0;
 }
 
 function Avatar(isInBottomLane) {
@@ -64,12 +63,12 @@ function Avatar(isInBottomLane) {
 }
 
 Avatar.prototype.moveToTopLane = function () {
-    $(".avatarContainer").animate({"bottom": "100px"});
+    $("#avabox").animate({"bottom": "125px"});
     this.isInBottomLane = false;
 }
 
 Avatar.prototype.moveToBottomLane = function () {
-    $(".avatarContainer").animate({"bottom": "0px"});
+    $("#avabox").animate({"bottom": "2px"});
     this.isInBottomLane = true;
 }
 
@@ -111,7 +110,7 @@ function move_food(id, idx) {
     var foodbottom=foodtop+foodheight;
 
     
-    var avatar =$(".avatarContainer");
+    var avatar =$("#avabox");
     var avatarposition=avatar.offset();
     var avatarwidth=avatar.width();
     var avatarheight=avatar.height();
@@ -128,12 +127,10 @@ function move_food(id, idx) {
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
-        game.score += game.foodList[idx].healthValue;
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
-        console.log("SCORE"+game.score); 
     }
 }
 
@@ -165,7 +162,7 @@ function switchLanes(foodObj, i)
     switch(laneID)
          {
             case 1:
-             $(foodObj).css({"bottom": 100, "right": -(i * 88)});
+             $(foodObj).css({"bottom": 125, "right": -(i * 88)});
              break;
             case 2:
              $(foodObj).css({"bottom": 0, "right": -(i * 88)});
@@ -174,7 +171,7 @@ function switchLanes(foodObj, i)
 }
 
 
-//avatarSpeed function with current nutrtrionbar red/green ratio
+//avatarSpeed function with current nutrition bar red/green ratio
 //as NBperc. Will move the avatar at certain points on the nutrition
 //bar.
 function avatarSpeed(NBperc)
@@ -182,23 +179,23 @@ function avatarSpeed(NBperc)
 
        if (NBperc >= 0 && NBperc < 10)
         {
-            $(".avatarContainer").animate({"left": "5%"}, 2000);
+            $("#avabox").animate({"left": "5%"}, 2000);
         }    
         else if (NBperc > 20 && NBperc <= 30)
         {
-         $(".avatarContainer").animate({"left": "25%"}, 2000);
+         $("#avabox").animate({"left": "25%"}, 2000);
         }
         else if (NBperc > 45 && NBperc <= 55)
         {
-             $(".avatarContainer").animate({"left": "45%"});
+             $("#avabox").animate({"left": "45%"});
         } 
         else if (NBperc > 70 && NBperc <= 80)
         {
-              $(".avatarContainer").animate({"left": "65%"}, 1000);
+              $("#avabox").animate({"left": "65%"}, 1000);
         }
         else if(NBperc >= 90 && NBperc <= 100)
          {
-            $(".avatarContainer").animate({"left": "85%"}, 1000);
+            $("#avabox").animate({"left": "85%"}, 1000);
          }
         else
             return;
@@ -239,7 +236,7 @@ var foodMap = {
 $(document).ready(function () {
     game = new Game(1);
     avatar = new Avatar(true);
-    tickinterval = setInterval(move_background, 15);
+    tickinterval = setInterval(move_background, 6);
 //run 10 times from 0 to 9
      for(var i = 0; i<10; i++){
          //generate random item between 1 and 16
@@ -297,10 +294,7 @@ timeInSecs--;
 else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
-//calling end screen 
-document.location.href="endscreen.html";
 }
-
 
 document.getElementById("tick").innerHTML = secs;
 }
@@ -316,6 +310,5 @@ $("#pauseB").click(function(){
 //Click event for resume button on pause menu. Remaining time stored
 //in remSecs is used to restart the timer.
 $("#close").click(function(){
-          startTimer(remSecs);
-      });
+          startTimer(remSecs);});
 });
