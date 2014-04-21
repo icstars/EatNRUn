@@ -55,6 +55,7 @@ Food.prototype.renderFood = function () {
 function Game(horizontalDelta) {
     this.horizontalDelta = horizontalDelta;
     this.foodList = [];
+    this.score = 0;
 }
 
 function Avatar(isInBottomLane) {
@@ -127,13 +128,12 @@ function move_food(id, idx) {
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
+        game.score += game.foodList[idx].healthValue;
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
-        //score
-        score++;
-        console.log("SCORE"+score);       
+        console.log("SCORE"+game.score); 
     }
 }
 
@@ -319,4 +319,3 @@ $("#close").click(function(){
           startTimer(remSecs);
       });
 });
-var score=0;
