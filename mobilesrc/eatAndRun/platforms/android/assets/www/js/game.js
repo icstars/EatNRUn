@@ -131,6 +131,9 @@ function move_food(id, idx) {
         console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
+        //score
+        score++;
+        console.log("SCORE"+score);       
     }
 }
 
@@ -294,7 +297,10 @@ timeInSecs--;
 else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+//calling end screen 
+document.location.href="endscreen.html";
 }
+
 
 document.getElementById("tick").innerHTML = secs;
 }
@@ -313,3 +319,4 @@ $("#close").click(function(){
           startTimer(remSecs);
       });
 });
+var score=0;
