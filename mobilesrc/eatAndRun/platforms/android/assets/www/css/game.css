@@ -14,6 +14,7 @@ html, body, .main-content{
     max-width: 100%;
     overflow-x: hidden;
 }
+
 #avabox {
     height: 144px;
     width: 125px;
@@ -21,6 +22,14 @@ html, body, .main-content{
     bottom: 0%;
     right: 45%;
 }
+
+#lunchbox {
+    height: 150px;
+    width: 125px;
+    position: absolute;
+	bottom: 0%
+}
+
 
 .food{
    height: 44px; 
