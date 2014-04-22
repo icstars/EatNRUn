@@ -47,68 +47,68 @@
 <script>
       var stage = new Kinetic.Stage({ //stage where you stick the layer
         container: 'avabox', //the id of the stage
-        width: 148,
-        height: 175});
+        width: 125,
+        height: 144});
 		
-      var layer = new Kinetic.Layer(); //the layer where the animation lies
-      var animations = { //the function of the different sprites you'll cycle through
-        walkCycle: [{ //placement of sprite on the spritesheet
+      var layer = new Kinetic.Layer();
+      var animations = {
+        walkCycle: [{
           x: 1,
           y: 1,
-          width: 150,
-          height: 160}, 
-		  {x: 150,
+          width: 125,
+          height: 144}, 
+		  {x: 125,
           y: 1,
-          width: 150,
-          height: 160}, 
-		  {x: 300,
+          width: 125,
+          height: 144}, 
+		  {x: 250,
           y: 1,
-          width: 150,
-          height: 160}, 
-		  {x: 450,
+          width: 125,
+          height: 144}, 
+		  {x: 375,
           y: 1,
-          width: 150,
-          height: 160}, 
+          width: 125,
+          height: 144}, 
 		  {x: 1,
-          y: 175,
-          width: 150,
-          height: 175},
-		  {x: 150,
-          y: 175,
-          width: 150,
-          height: 175}, 
-		  {x: 300,
-          y: 166,
-          width: 150,
-          height: 166}, 
-		  {x: 450,
-          y: 175,
-          width: 150,
-          height: 166},
+          y: 142,
+          width: 125,
+          height: 144},
+		  {x: 125,
+          y: 144,
+          width: 125,
+          height: 144}, 
+		  {x: 250,
+          y: 142,
+          width: 125,
+          height: 144}, 
+		  {x: 375,
+          y: 142,
+          width: 125,
+          height: 144},
 		  {x: 1,
-          y: 350,
-          width: 150,
-          height: 166},
-		  {x: 150,
-          y: 350,
-          width: 150,
-          height: 166}, 
-		  {x: 300,
-          y: 350,
-          width: 150,
-          height: 166}, 
-		  {x: 450,
-          y: 350,
-          width: 150,
-          height: 166}, 
+          y: 294,
+          width: 125,
+          height: 144},
+		  {x: 125,
+          y: 294,
+          width: 125,
+          height: 144}, 
+		  {x: 250,
+          y: 294,
+          width: 125,
+          height: 144}, 
+		  {x: 375,
+          y: 294,
+          width: 125,
+          height: 144}, 
 		  {x: 1,
-          y: 525,
-          width: 150,
-          height: 166},
-		  {x: 150,
-          y: 525,
-          width: 150,
-          height: 166}]};
+          y: 437,
+          width: 125,
+          height: 144},
+		  {x: 125,
+          y: 437,
+          width: 125,
+          height: 144}]};
 
       var imageObj = new Image(); // the sprite sheet 
       imageObj.onload = function() { //load the image 
@@ -135,7 +135,7 @@
           art.start();     
           }, false);	//resumes the animation
 		 }	   
-      imageObj.src = 'img/clearjel.png'; //image source		
+      imageObj.src = 'img/jellorun.png'; //image source		
     </script>
     </body>
 </html>

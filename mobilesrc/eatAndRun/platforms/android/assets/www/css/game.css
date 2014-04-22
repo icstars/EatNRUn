@@ -15,8 +15,8 @@ html, body, .main-content{
     overflow-x: hidden;
 }
 #avabox {
-    height: 175px;
-    width: 150px;
+    height: 144px;
+    width: 125px;
     position: absolute;
     bottom: 0%;
     right: 45%;

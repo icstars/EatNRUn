@@ -69,7 +69,7 @@ Avatar.prototype.moveToTopLane = function () {
 }
 
 Avatar.prototype.moveToBottomLane = function () {
-    $("#avabox").animate({"bottom": "2px"});
+    $("#avabox").animate({"bottom": "3px"});
     this.isInBottomLane = true;
 }
 
@@ -165,7 +165,7 @@ function switchLanes(foodObj, i)
     switch(laneID)
          {
             case 1:
-             $(foodObj).css({"bottom": 125, "right": -(i * 88)});
+             $(foodObj).css({"bottom": 150, "right": -(i * 88)});
              break;
             case 2:
              $(foodObj).css({"bottom": 0, "right": -(i * 88)});
