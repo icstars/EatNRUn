@@ -4,7 +4,7 @@ html {  height: 100%;
 body {
 	background-image:url(../img/newbackground.png);
 	background-size: contain;
-	background-position: relative;
+	background-attachment: fixed;
     height: 100%;
     background-repeat: repeat-x;
 
