@@ -17,11 +17,11 @@ $(document).ready(function(){
 		start();
     });
  
-    // hides the popup if user clicks anywhere outside the container
-    $('.overlay-bg').click(function(){
-        $('.overlay-bg').hide();
-		start();
-    })
+ // hides the popup if user clicks anywhere outside the container
+   $('.overlay-bg').click(function(){
+      event.stopPropagation(); //stop any further action after initial on click action.
+     });
+	
     // prevents the overlay from closing if user clicks inside the popup overlay
     $('.overlay-content').click(function(){
         return false;
