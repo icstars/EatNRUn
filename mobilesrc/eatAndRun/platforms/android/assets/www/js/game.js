@@ -182,23 +182,23 @@ function avatarSpeed(NBperc)
 
        if (NBperc >= 0 && NBperc < 10)
         {
-            $("#avabox").animate({"left": "5%"}, 2000);
+            $("#avabox").animate({"right": "5%"}, 2000);
         }    
         else if (NBperc > 20 && NBperc <= 30)
         {
-         $("#avabox").animate({"left": "25%"}, 2000);
+         $("#avabox").animate({"right": "25%"}, 2000);
         }
         else if (NBperc > 45 && NBperc <= 55)
         {
-             $("#avabox").animate({"left": "45%"});
+             $("#avabox").animate({"right": "45%"});
         } 
         else if (NBperc > 70 && NBperc <= 80)
         {
-              $("#avabox").animate({"left": "65%"}, 1000);
+              $("#avabox").animate({"right": "65%"}, 1000);
         }
         else if(NBperc >= 90 && NBperc <= 100)
          {
-            $("#avabox").animate({"left": "85%"}, 1000);
+            $("#avabox").animate({"right": "85%"}, 1000);
          }
         else
             return;
