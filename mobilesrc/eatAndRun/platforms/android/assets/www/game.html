@@ -7,17 +7,14 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
-   
+		<script type="text/javascript" src="js/pause.js"></script>
             <!-- CSS References -->
         <link href="css/healthbar.css" rel="stylesheet" type="text/css"/>
         <link href="css/game.css" rel="stylesheet" type="text/css"/>
-        
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-        
+        <link href='css/overlaypopup.css' rel='stylesheet' type='text/css'>
        <!--md-->
-
-	<script type="text/javascript" src="js/pause.js"></script>
-	<link href='css/overlaypopup.css' rel='stylesheet' type='text/css'>
+	
     </head>
     <body style="z-index : 1">
 <div class="main-content">
@@ -42,7 +39,7 @@
         </div>
       </div>
 	  <div class="timer" align="center"><span id="tick">60</span></div>
-      
+		<div id="lunchbox"><img src="img/lunchlady.png"/></div>
         <div id="avabox"></div>
 <script>
       var stage = new Kinetic.Stage({ //stage where you stick the layer

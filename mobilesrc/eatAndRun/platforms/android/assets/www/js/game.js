@@ -60,7 +60,6 @@ function Game(horizontalDelta) {
 
 function Avatar(isInBottomLane) {
     this.isInBottomLane = isInBottomLane;
-
 }
 
 Avatar.prototype.moveToTopLane = function () {
@@ -110,6 +109,14 @@ function move_food(id, idx) {
     var foodright=foodleft+foodwidth;
     var foodbottom=foodtop+foodheight;
 
+	var lunchlady =$("#lunchbox");
+	var lunchpos=lunchlady.offset();
+	var lunchwid=lunchlady.width();
+	var lunchhgt=lunchlady.height();
+	var lunchlft=lunchpos.left;
+	var lunchtop=lunchpos.top;
+	var lunchrt=lunchlft+lunchwid;
+	var lunchbot=lunchtop+lunchhgt;
     
     var avatar =$("#avabox");
     var avatarposition=avatar.offset();
@@ -135,7 +142,18 @@ function move_food(id, idx) {
         addNewFood();
         console.log("score"+game.score);
     }
+	
+	if (lunchrt>avatarleft && 
+		lunchbot>avatartop &&
+		lunchtop<avatarbottom &&
+		lunchlft<avatarright)
+		{console.log("lunchhit");
+		clearInterval(ticker); 
+		document.location.href="endscreen.html";}
 }
+
+
+
 
 function adjustNB(hVal)
 {
