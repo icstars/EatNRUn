@@ -44,10 +44,19 @@ html, body, .main-content{
     bottom: 0px;
 }
 #tick {
-    font-size: 20px;
-    color: blue;
+    font-family: impact;
+    font-size: 23px;
+    color: gold;
     width:100px;
     height:50px;
-    border: 1px dashed #d3dfe8;
-    background-color: #8ce4ec;
+    background-color: #000000;
+}
+#score {
+    font-family: impact;
+    font-size: 25px;
+    color: gold;
+    width:190px;
+    height:70px;
+    border: 2px  #d3dfe8;
+    background-color: #000000;
 }
