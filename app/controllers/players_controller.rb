@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, except: [:index, :new, :create]
   respond_to :html, :json
 
   # GET /players
@@ -11,6 +11,11 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     respond_with @player
+  end
+
+  def coach_message
+    results = {message: @player.coach_message}
+    respond_with results
   end
 
   # GET /players/new
