@@ -150,7 +150,9 @@ function move_food(id, idx) {
 		lunchlft<avatarright)
 		{console.log("lunchhit");
 		clearInterval(ticker); 
-		document.location.href="endscreen.html";}
+        window.localStorage.setItem("score", game.score);
+        document.location.href="endscreen.html";}
+		
 }
 
 
@@ -318,7 +320,11 @@ clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
 document.location.href = decideCurrentCoachDocument();
+window.localStorage.setItem("score", game.score);
+document.location.href="endscreen.html";
+
 }
+
 
 document.getElementById("tick").innerHTML = secs;
 }
