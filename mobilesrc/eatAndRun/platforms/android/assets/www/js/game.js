@@ -217,7 +217,7 @@ function avatarSpeed(NBperc)
         }
         else if(NBperc >= 90 && NBperc <= 100)
          {
-            $("#avabox").animate({"rightt": "5%"}, 1000);
+            $("#avabox").animate({"right": "5%"}, 1000);
          }
         else
             return;
@@ -317,7 +317,7 @@ else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
-document.location.href="endscreen.html";
+document.location.href = decideCurrentCoachDocument();
 }
 
 document.getElementById("tick").innerHTML = secs;
@@ -336,3 +336,50 @@ $("#pauseB").click(function(){
 $("#close").click(function(){
           startTimer(remSecs);});
 });
+//functions for coaches
+function isNumber(value) {
+        return typeof value === 'number';
+}
+
+function isntNumber(value) {
+        return typeof value !== 'number';
+}
+
+function isNumberWithin(value, lowValue, highValue) {
+        if (value < lowValue) { return false; }
+        if (value > highValue) { return false; }
+        return true;
+//end functions for coaches
+
+
+}
+
+function checkIsValidPercentage(value) {
+        if (isntNumber(value)) {
+                new Error("value must be a number!");
+                return false;
+        }
+        if (isNumberWithin(value, 0, 100)) { return true; }
+        new Error("value must be within 0 to 100 to be a percentage!");
+        return false;
+}
+
+function isPercentageWithin(value, lowValue, highValue) {
+        checkIsValidPercentage(value);
+        return isNumberWithin(value, lowValue, highValue);
+}
+
+
+function decideCurrentCoachDocument(healthPercentageValue) {
+       /* if (!isIncludedBetween(healthPercentageValue, 0, 100)) {
+                new Error("healthPercentageValue must be ")
+        }*/
+        if (isPercentageWithin(healthPercentageValue, 0, 39)) {
+                endScreenDocument = "endscreen_coach2.html";
+        } else if (isPercentageWithin(healthPercentageValue, 40, 60)) {
+                endScreenDocument = "endscreen_coach1.html";
+        } else (isPercentageWithin(healthPercentageValue, 61, 100)) 
+                endScreenDocument = "endscreen_coach3.html";
+        
+        return endScreenDocument;
+		}
