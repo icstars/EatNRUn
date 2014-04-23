@@ -23,10 +23,10 @@ html, body, .main-content{
 }
 
 #lunchbox {
-    height: 150px;
+    height: 155px;
     width: 125px;
     position: absolute;
-	bottom: 0%
+	bottom: 1%
 }
 
 

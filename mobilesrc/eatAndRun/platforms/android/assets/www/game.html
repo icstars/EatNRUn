@@ -41,8 +41,8 @@
       </div>
     <div align="left"><span id="score">SCORE: 0</span></div>
 	  <div class="timer" align="center"><span id="tick">60</span></div>
-		<div id="lunchbox"><img src="img/lunchlady.png"/></div>
-        <div id="avabox"></div>
+		<div id="avabox"></div>
+        <div id="lunchbox"></div>
 <script>
       var stage = new Kinetic.Stage({ //stage where you stick the layer
         container: 'avabox', //the id of the stage
@@ -134,7 +134,101 @@
           art.start();     
           }, false);	//resumes the animation
 		 }	   
-      imageObj.src = 'img/jellorun.png'; //image source		
+      imageObj.src = 'img/jellorun.png'; //image source	
+
+
+ var lunstage = new Kinetic.Stage({
+        container: 'lunchbox',
+        width: 129,
+        height: 152});
+		
+      var lunlayer = new Kinetic.Layer();
+      var lanimations = {
+        lunCycle: [{
+          x: 1,
+          y: 1,
+          width: 124,
+          height: 146}, 
+		  {x: 124,
+          y: 1,
+          width: 121,
+          height: 146}, 
+		  {x: 244,
+          y: 1,
+          width: 129,
+          height: 146}, 
+		  {x: 373,
+          y: 1,
+          width: 127,
+          height: 148}, 
+		  {x: 1,
+          y: 146,
+          width: 124,
+          height: 152},
+		  {x: 124,
+          y: 146,
+          width: 121,
+          height: 152}, 
+		  {x: 244,
+          y: 146,
+          width: 129,
+          height: 152}, 
+		  {x: 373,
+          y: 146,
+          width: 127,
+          height: 152}, 
+		  {x: 1,
+          y: 298,
+          width: 124,
+          height: 148},
+		  {x: 124,
+          y: 298,
+          width: 121,
+          height: 148}, 
+		  {x: 244,
+          y: 298,
+          width: 129,
+          height: 148}, 
+		  {x: 373,
+          y: 298,
+          width: 127,
+          height: 148}, 
+		  {x: 1,
+          y: 451,
+          width: 124,
+          height: 158},
+		  {x: 124,
+          y: 451,
+          width: 121,
+          height: 158}]};
+
+      var lunImage = new Image();
+      lunImage.onload = function() {
+        var big = new Kinetic.Sprite({
+          x: 1,
+          y: 1,
+          image: lunImage,
+          animation: 'lunCycle',
+          animations: lanimations,
+          frameRate: 20,});
+		  
+        // add the shape to the layer
+        lunlayer.add(big);
+
+        // add the layer to the stage
+        lunstage.add(lunlayer);
+		big.start();
+		
+		
+		document.getElementById('pauseB').addEventListener('click', function() {
+          big.stop();     
+          }, false); 
+		   
+		document.getElementById('close').addEventListener('click', function() {
+          big.start();     
+          }, false);
+		}	
+      lunImage.src = "img/lunchrun.png";		  
     </script>
     </body>
 </html>
