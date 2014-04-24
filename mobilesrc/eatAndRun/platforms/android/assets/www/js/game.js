@@ -139,7 +139,7 @@ function move_food(id, idx) {
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
-        game.score += game.foodList[idx].healthValue;
+        game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
