@@ -149,6 +149,7 @@ function move_food(id, idx) {
         $("#" + id).remove();
         addNewFood();
         console.log("score"+game.score);
+		$("#score").html("SCORE: " + game.score);
         }
     
     if (lunchrt>avatarleft && 
