@@ -7,6 +7,7 @@ function decrease(dec) {
     if (perc >= 0 + dec) {
         var perc = perc - dec;
         avatarSpeed(perc);
+        endDecision = decideCurrentCoachDocument(perc);
     }
     else {
         perc = 0;
@@ -23,6 +24,7 @@ function increase(inc) {
     if (perc <= 100 - inc) {
         var perc = perc + inc;
         avatarSpeed(perc);
+        endDecision = decideCurrentCoachDocument(perc);
     }
     else {
         perc = 100;
@@ -238,6 +240,8 @@ var tickinterval;
 var game;
 var avatar;
 var DIVIDEND = 1600;
+var endDecision;
+var endScreenDocument;
 //images on foodmap coorelate with name//
 var foodMap = {
     1: {name: "Pizza", healthValue: -80},
@@ -321,10 +325,8 @@ else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
-document.location.href = decideCurrentCoachDocument();
 window.localStorage.setItem("score", game.score);
-document.location.href="endscreen.html";
-
+document.location.href = endDecision;
 }
 
 
@@ -386,8 +388,9 @@ function decideCurrentCoachDocument(healthPercentageValue) {
                 endScreenDocument = "endscreen_coach2.html";
         } else if (isPercentageWithin(healthPercentageValue, 40, 60)) {
                 endScreenDocument = "endscreen_coach1.html";
-        } else (isPercentageWithin(healthPercentageValue, 61, 100)) 
+        } else if(isPercentageWithin(healthPercentageValue, 61, 100)){
                 endScreenDocument = "endscreen_coach3.html";
+        }
         
         return endScreenDocument;
 		}
