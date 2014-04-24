@@ -64,11 +64,13 @@ function Avatar(isInBottomLane) {
 
 Avatar.prototype.moveToTopLane = function () {
     $("#avabox").animate({"bottom": "125px"});
+    $("#lunchbox").animate({"bottom": "125px"}, 'slow');
     this.isInBottomLane = false;
 }
 
 Avatar.prototype.moveToBottomLane = function () {
     $("#avabox").animate({"bottom": "3px"});
+    $("#lunchbox").animate({"bottom": "3px"}, 'slow');
     this.isInBottomLane = true;
 }
 
