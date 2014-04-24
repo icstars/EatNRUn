@@ -155,7 +155,7 @@ function move_food(id, idx) {
 		{console.log("lunchhit");
 		clearInterval(ticker); 
         window.localStorage.setItem("score", game.score);
-        document.location.href="endscreen.html";}
+        document.location.href="continue.html";}
 		
 }
 
