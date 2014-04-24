@@ -66,18 +66,15 @@ function Avatar(isInBottomLane) {
 
 Avatar.prototype.moveToTopLane = function () {
     $("#avabox").animate({"bottom": "125px"});
-    $("#lunchbox").animate({"bottom": "125px"}, 'slow');
     this.isInBottomLane = false;
 }
 
 Avatar.prototype.moveToBottomLane = function () {
     $("#avabox").animate({"bottom": "3px"});
-    $("#lunchbox").animate({"bottom": "3px"}, 'slow');
     this.isInBottomLane = true;
 }
 
 var background_position = 0;
-var avatar_edge = 108;
 function move_background() {
     background_position = background_position - game.horizontalDelta;
     $('body').css("background-position-x", background_position);
@@ -131,23 +128,20 @@ function move_food(id, idx) {
     var avatarright=avatarleft+avatarwidth;
     var avatarbottom=avatartop+avatarheight;
     
-        var resetbox =$("#resetbox");
-        var resetboxposition=resetbox.offset();
-        var resetboxwidth=resetbox.width();
-        var resetboxheight=resetbox.height();
-        var resetboxleft=resetboxposition.left;
-        var resetboxtop=resetboxposition.top;
-        var resetboxright=resetboxleft+resetboxwidth;
-        var resetboxbottom=resetboxtop+resetboxheight;
+    var resetbox =$("#resetbox");
+    var resetboxposition=resetbox.offset();
+    var resetboxwidth=resetbox.width();
+    var resetboxheight=resetbox.height();
+    var resetboxleft=resetboxposition.left;
+    var resetboxtop=resetboxposition.top;
+    var resetboxright=resetboxleft+resetboxwidth;
+    var resetboxbottom=resetboxtop+resetboxheight;
         
-
     if (foodright>avatarleft && 
     foodbottom>avatartop &&
     foodtop<avatarbottom &&
     foodleft<avatarright)
     {   
-   // if (left_offset < avatar_edge) {
-        //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
         game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
@@ -155,34 +149,28 @@ function move_food(id, idx) {
         $("#" + id).remove();
         addNewFood();
         console.log("score"+game.score);
-        $("#score").html("SCORE: " + game.score);
-    }
+        }
     
     if (lunchrt>avatarleft && 
         lunchbot>avatartop &&
         lunchtop<avatarbottom &&
         lunchlft<avatarright)
-        {console.log("lunchhit");
-        clearInterval(ticker); 
+        {
+		clearInterval(tickinterval); 
+		document.location.href="endscreen.html";
+		console.log("lunchhit");
         window.localStorage.setItem("score", game.score);
-        document.location.href="endscreen.html";}
+        }
         
-if (foodright>resetboxleft && 
-    foodbottom>resetboxtop &&
-    foodtop<resetboxbottom &&
-    foodleft<resetboxright)
-    {   
-   // if (left_offset < avatar_edge) {
-        //clearInterval(tickinterval);
-        //adjustNB(game.foodList[idx].healthValue);
-        //game.score += game.foodList[idx].healthValue;
+	if	(resetboxright>foodleft && 
+		resetboxbottom>foodtop &&
+		resetboxtop<foodbottom &&
+		resetboxleft<foodright)
+		{   
         game.foodList.splice(idx, 1);
         console.log("resetBox");
         $("#" + id).remove();
-        addNewFood();
-        //console.log("score"+game.score);
-        //$("#score").html("SCORE: " + game.score);
-    }
+        addNewFood();}
 }
 
 
@@ -349,10 +337,9 @@ else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
+document.location.href="endscreen.html";
 window.localStorage.setItem("score", game.score);
-document.location.href = endDecision;
 }
-
 
 document.getElementById("tick").innerHTML = secs;
 }
@@ -384,8 +371,6 @@ function isNumberWithin(value, lowValue, highValue) {
         if (value > highValue) { return false; }
         return true;
 //end functions for coaches
-
-
 }
 
 function checkIsValidPercentage(value) {
@@ -402,7 +387,6 @@ function isPercentageWithin(value, lowValue, highValue) {
         checkIsValidPercentage(value);
         return isNumberWithin(value, lowValue, highValue);
 }
-
 
 function decideCurrentCoachDocument(healthPercentageValue) {
        /* if (!isIncludedBetween(healthPercentageValue, 0, 100)) {

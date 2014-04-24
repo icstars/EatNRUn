@@ -27,7 +27,7 @@ $(document).ready(function(){
         return false;
     });
 	$("#resume").click(function(){
-     window.location = "continue.html";    
+     window.location = "game.html";    
 	});
 	$("#restart").click(function(){
      window.location = "game.html";    
