@@ -5,23 +5,23 @@ class DecisionsController < ApplicationController
   # GET /decisions
   def index
     @decisions = Decision.all
-    respond_with @decisions
+    respond_with @decisions, callback: params[:callback]
   end
 
   # GET /decisions/1
   def show
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   # GET /decisions/new
   def new
     @decision = Decision.new
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   # GET /decisions/1/edit
   def edit
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   # POST /decisions
@@ -31,7 +31,7 @@ class DecisionsController < ApplicationController
     if @decision.save
       flash[:notice] = 'Decision was successfully created.'
     end
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   # PATCH/PUT /decisions/1
@@ -39,14 +39,14 @@ class DecisionsController < ApplicationController
     if @decision.update(decision_params)
       flash[:notice] = 'Decision was successfully updated.'
     end
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   # DELETE /decisions/1
   def destroy
     @decision.destroy
     flash[:notice] = 'Decision was successfully destroyed.'
-    respond_with @decision
+    respond_with @decision, callback: params[:callback]
   end
 
   private
