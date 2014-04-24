@@ -113,14 +113,14 @@ function move_food(id, idx) {
     var foodright=foodleft+foodwidth;
     var foodbottom=foodtop+foodheight;
 
-	var lunchlady =$("#lunchbox");
-	var lunchpos=lunchlady.offset();
-	var lunchwid=lunchlady.width();
-	var lunchhgt=lunchlady.height();
-	var lunchlft=lunchpos.left;
-	var lunchtop=lunchpos.top;
-	var lunchrt=lunchlft+lunchwid;
-	var lunchbot=lunchtop+lunchhgt;
+    var lunchlady =$("#lunchbox");
+    var lunchpos=lunchlady.offset();
+    var lunchwid=lunchlady.width();
+    var lunchhgt=lunchlady.height();
+    var lunchlft=lunchpos.left;
+    var lunchtop=lunchpos.top;
+    var lunchrt=lunchlft+lunchwid;
+    var lunchbot=lunchtop+lunchhgt;
     
     var avatar =$("#avabox");
     var avatarposition=avatar.offset();
@@ -130,6 +130,16 @@ function move_food(id, idx) {
     var avatartop=avatarposition.top;
     var avatarright=avatarleft+avatarwidth;
     var avatarbottom=avatartop+avatarheight;
+    
+        var resetbox =$("#resetbox");
+        var resetboxposition=resetbox.offset();
+        var resetboxwidth=resetbox.width();
+        var resetboxheight=resetbox.height();
+        var resetboxleft=resetboxposition.left;
+        var resetboxtop=resetboxposition.top;
+        var resetboxright=resetboxleft+resetboxwidth;
+        var resetboxbottom=resetboxtop+resetboxheight;
+        
 
     if (foodright>avatarleft && 
     foodbottom>avatartop &&
@@ -139,7 +149,7 @@ function move_food(id, idx) {
    // if (left_offset < avatar_edge) {
         //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
-        game.score += Math.abs(game.foodList[idx].healthValue);
+        game.score += game.foodList[idx].healthValue;
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
@@ -147,19 +157,33 @@ function move_food(id, idx) {
         console.log("score"+game.score);
         $("#score").html("SCORE: " + game.score);
     }
-	
-	if (lunchrt>avatarleft && 
-		lunchbot>avatartop &&
-		lunchtop<avatarbottom &&
-		lunchlft<avatarright)
-		{console.log("lunchhit");
-		clearInterval(ticker); 
+    
+    if (lunchrt>avatarleft && 
+        lunchbot>avatartop &&
+        lunchtop<avatarbottom &&
+        lunchlft<avatarright)
+        {console.log("lunchhit");
+        clearInterval(ticker); 
         window.localStorage.setItem("score", game.score);
-        document.location.href="continue.html";}
-		
+        document.location.href="endscreen.html";}
+        
+if (foodright>resetboxleft && 
+    foodbottom>resetboxtop &&
+    foodtop<resetboxbottom &&
+    foodleft<resetboxright)
+    {   
+   // if (left_offset < avatar_edge) {
+        //clearInterval(tickinterval);
+        //adjustNB(game.foodList[idx].healthValue);
+        //game.score += game.foodList[idx].healthValue;
+        game.foodList.splice(idx, 1);
+        console.log("resetBox");
+        $("#" + id).remove();
+        addNewFood();
+        //console.log("score"+game.score);
+        //$("#score").html("SCORE: " + game.score);
+    }
 }
-
-
 
 
 function adjustNB(hVal)
