@@ -6,7 +6,7 @@ $(function() {
 		max: 100, 
 		value: 1,
 		slide: function() {
-			document.getElementById("  ").volume = ($(this).slider("value")/100);
+			document.getElementById("fault.mp3").volume = ($(this).slider("value")/100);
 		}
 	});
 

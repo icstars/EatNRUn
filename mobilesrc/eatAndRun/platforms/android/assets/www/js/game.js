@@ -64,11 +64,13 @@ function Avatar(isInBottomLane) {
 
 Avatar.prototype.moveToTopLane = function () {
     $("#avabox").animate({"bottom": "125px"});
+    //$("#lunchbox").animate({"bottom": "125px"});
     this.isInBottomLane = false;
 }
 
 Avatar.prototype.moveToBottomLane = function () {
     $("#avabox").animate({"bottom": "3px"});
+    //$("#lunchbox").animate({"bottom": "3px"});
     this.isInBottomLane = true;
 }
 
@@ -286,9 +288,11 @@ $(document).ready(function () {
         if (event.clientY > $(document).height() / 2) {
             //bottom half clicked move avatar down
             avatar.moveToBottomLane();
+            lunchbox.moveToBottomLane();
         } else {
             //top half
             avatar.moveToTopLane();
+            lunchbox.moveToTopLane();
         }
 
     });

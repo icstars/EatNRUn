@@ -38,9 +38,10 @@
 
 <body>
 <section class="container">
-	
+	<audio id="racetune" src="snd/racetune.mp3" preload="auto" autoplay loop></audio>
 	<div class="sliders" align="center">
 	<img src="img/sound.png"/><br></br>
+
       <p>Sound FX</p>
 		<p><div id="Slider2"></div></p>
         <p><div class="float-left"><strong>Mute</strong></div><div id="fx" class="float-right"><strong>High</strong></div></p><br></br>
@@ -51,28 +52,26 @@
 </section>
 
 <script>
+
 $(function() {	
 	
 	$( "#Slider2" ).slider({ 
 		min: 0, 
 		max: 100, 
-		value: 1,
+		value: 50,
 		slide: function() {
-			document.getElementById("  ").volume = ($(this).slider("value")/100);
+			document.getElementById("      ").volume = ($(this).slider("value")/100);
 		}
 	});
 
 	$( "#Slider3" ).slider({ 
 		min: 0, 
 		max: 100, 
-		value: 1,
+		value: 50,
 		slide: function() {
-			document.getElementById("  ").volume = ($(this).slider("value")/100);
+			document.getElementById("racetune").volume = ($(this).slider("value")/100);
 		}
-	});
-
-
-	
+	});	
 
 });
 </script>
