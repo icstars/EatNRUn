@@ -5,30 +5,30 @@ class FoodsController < ApplicationController
   # GET /foods
   def index
     @foods = Food.all
-    respond_with @foods
+    respond_with @foods, callback: params[:callback]
   end
 
   # GET /foods/random
   def random
     @food = Food.order("RANDOM()").first
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   # GET /foods/1
   def show
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
 
   # GET /foods/new
   def new
     @food = Food.new
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   # GET /foods/1/edit
   def edit
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   # POST /foods
@@ -38,7 +38,7 @@ class FoodsController < ApplicationController
     if @food.save
       flash[:notice] = 'Food was successfully created.'
     end
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   # PATCH/PUT /foods/1
@@ -46,14 +46,14 @@ class FoodsController < ApplicationController
     if @food.update(food_params)
       flash[:notice] = 'Food was successfully updated.'
     end
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   # DELETE /foods/1
   def destroy
     @food.destroy
     flash[:notice] = 'Food was successfully destroyed.'
-    respond_with @food
+    respond_with @food, callback: params[:callback]
   end
 
   private

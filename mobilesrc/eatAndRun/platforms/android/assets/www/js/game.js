@@ -7,6 +7,7 @@ function decrease(dec) {
     if (perc >= 0 + dec) {
         var perc = perc - dec;
         avatarSpeed(perc);
+        endDecision = decideCurrentCoachDocument(perc);
     }
     else {
         perc = 0;
@@ -23,6 +24,7 @@ function increase(inc) {
     if (perc <= 100 - inc) {
         var perc = perc + inc;
         avatarSpeed(perc);
+        endDecision = decideCurrentCoachDocument(perc);
     }
     else {
         perc = 100;
@@ -75,7 +77,6 @@ Avatar.prototype.moveToBottomLane = function () {
 }
 
 var background_position = 0;
-var avatar_edge = 108;
 function move_background() {
     background_position = background_position - game.horizontalDelta;
     $('body').css("background-position-x", background_position);
@@ -111,14 +112,14 @@ function move_food(id, idx) {
     var foodright=foodleft+foodwidth;
     var foodbottom=foodtop+foodheight;
 
-	var lunchlady =$("#lunchbox");
-	var lunchpos=lunchlady.offset();
-	var lunchwid=lunchlady.width();
-	var lunchhgt=lunchlady.height();
-	var lunchlft=lunchpos.left;
-	var lunchtop=lunchpos.top;
-	var lunchrt=lunchlft+lunchwid;
-	var lunchbot=lunchtop+lunchhgt;
+    var lunchlady =$("#lunchbox");
+    var lunchpos=lunchlady.offset();
+    var lunchwid=lunchlady.width();
+    var lunchhgt=lunchlady.height();
+    var lunchlft=lunchpos.left;
+    var lunchtop=lunchpos.top;
+    var lunchrt=lunchlft+lunchwid;
+    var lunchbot=lunchtop+lunchhgt;
     
     var avatar =$("#avabox");
     var avatarposition=avatar.offset();
@@ -128,36 +129,52 @@ function move_food(id, idx) {
     var avatartop=avatarposition.top;
     var avatarright=avatarleft+avatarwidth;
     var avatarbottom=avatartop+avatarheight;
-
+    
+    var resetbox =$("#resetbox");
+    var resetboxposition=resetbox.offset();
+    var resetboxwidth=resetbox.width();
+    var resetboxheight=resetbox.height();
+    var resetboxleft=resetboxposition.left;
+    var resetboxtop=resetboxposition.top;
+    var resetboxright=resetboxleft+resetboxwidth;
+    var resetboxbottom=resetboxtop+resetboxheight;
+        
     if (foodright>avatarleft && 
     foodbottom>avatartop &&
     foodtop<avatarbottom &&
     foodleft<avatarright)
     {   
-   // if (left_offset < avatar_edge) {
-        //clearInterval(tickinterval);
         adjustNB(game.foodList[idx].healthValue);
-        game.score += game.foodList[idx].healthValue;
+        game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
         addNewFood();
         console.log("score"+game.score);
-        $("#score").html("SCORE: " + game.score);
-    }
-	
-	if (lunchrt>avatarleft && 
-		lunchbot>avatartop &&
-		lunchtop<avatarbottom &&
-		lunchlft<avatarright)
-		{console.log("lunchhit");
-		clearInterval(ticker); 
+		$("#score").html("SCORE: " + game.score);
+        }
+    
+    if (lunchrt>avatarleft && 
+        lunchbot>avatartop &&
+        lunchtop<avatarbottom &&
+        lunchlft<avatarright)
+        {
+		clearInterval(tickinterval); 
+		document.location.href="endscreen.html";
+		console.log("lunchhit");
         window.localStorage.setItem("score", game.score);
-        document.location.href="endscreen.html";}
-		
+        }
+        
+	if	(resetboxright>foodleft && 
+		resetboxbottom>foodtop &&
+		resetboxtop<foodbottom &&
+		resetboxleft<foodright)
+		{   
+        game.foodList.splice(idx, 1);
+        console.log("resetBox");
+        $("#" + id).remove();
+        addNewFood();}
 }
-
-
 
 
 function adjustNB(hVal)
@@ -238,6 +255,8 @@ var tickinterval;
 var game;
 var avatar;
 var DIVIDEND = 1600;
+var endDecision;
+var endScreenDocument;
 //images on foodmap coorelate with name//
 var foodMap = {
     1: {name: "Pizza", healthValue: -80},
@@ -323,12 +342,9 @@ else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
-document.location.href = decideCurrentCoachDocument();
-window.localStorage.setItem("score", game.score);
 document.location.href="endscreen.html";
-
+window.localStorage.setItem("score", game.score);
 }
-
 
 document.getElementById("tick").innerHTML = secs;
 }
@@ -360,8 +376,6 @@ function isNumberWithin(value, lowValue, highValue) {
         if (value > highValue) { return false; }
         return true;
 //end functions for coaches
-
-
 }
 
 function checkIsValidPercentage(value) {
@@ -379,7 +393,6 @@ function isPercentageWithin(value, lowValue, highValue) {
         return isNumberWithin(value, lowValue, highValue);
 }
 
-
 function decideCurrentCoachDocument(healthPercentageValue) {
        /* if (!isIncludedBetween(healthPercentageValue, 0, 100)) {
                 new Error("healthPercentageValue must be ")
@@ -388,8 +401,9 @@ function decideCurrentCoachDocument(healthPercentageValue) {
                 endScreenDocument = "endscreen_coach2.html";
         } else if (isPercentageWithin(healthPercentageValue, 40, 60)) {
                 endScreenDocument = "endscreen_coach1.html";
-        } else (isPercentageWithin(healthPercentageValue, 61, 100)) 
+        } else if(isPercentageWithin(healthPercentageValue, 61, 100)){
                 endScreenDocument = "endscreen_coach3.html";
+        }
         
         return endScreenDocument;
 		}

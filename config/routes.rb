@@ -8,7 +8,11 @@ EatNRUn::Application.routes.draw do
   end
 
 
-  resources :players
+  resources :players do
+    member do
+      get :coach_message
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

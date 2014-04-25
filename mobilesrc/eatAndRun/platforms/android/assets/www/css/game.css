@@ -23,8 +23,8 @@ html, body, .main-content{
 }
 
 #lunchbox {
-    height: 155px;
-    width: 125px;
+    height: 188px;
+    width: 173px;
     position: absolute;
 	bottom: 1%
 }
@@ -60,3 +60,9 @@ html, body, .main-content{
     border: 2px  #d3dfe8;
     background-color: #000000;
 }
+#resetbox {
+    height: 200px;
+    width: 1px;
+    position: absolute;
+    bottom: 0%;
+    }
