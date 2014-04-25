@@ -160,7 +160,7 @@ function move_food(id, idx) {
         lunchlft<avatarright)
         {
 		clearInterval(tickinterval); 
-		document.location.href="endscreen.html";
+		document.location.href="endscreen_coach4.html";
 		console.log("lunchhit");
         window.localStorage.setItem("score", game.score);
         }
@@ -307,12 +307,10 @@ $(document).ready(function () {
         if (event.clientY > $(document).height() / 2) {
             //bottom half clicked move avatar down
             avatar.moveToBottomLane();
-            lunchbox.moveToBottomLane();
-        } else {
+            } else {
             //top half
             avatar.moveToTopLane();
-            lunchbox.moveToTopLane();
-        }
+            }
 
     });
     /* var food = new Food(10, true);
