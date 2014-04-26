@@ -92,7 +92,7 @@ function addNewFood() {
     var food = new Food(foodMap[foodIdx]);
     food.id = nextId++;
     game.foodList.push(food);
-    var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name+'.png" id="food'+food.id+'">');
+    var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name.toLowerCase() +'.png" id="food'+food.id+'">');
     switchLanes($el, food.id)
     $('.main-content').append($el);
 }
@@ -296,7 +296,7 @@ $(document).ready(function () {
          //adding food to array of items that will appear
          game.foodList.push(food);
          //generating img tag for food
-         var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+i+'">');
+         var $el = $('<img class="food" src="img/sm'+ foodParams.name.toLowerCase() +'.png" id="food'+i+'">');
          //position items on the bottom track off screen based on id number
         switchLanes($el, i);
          //takes image and puts onto html
