@@ -17,6 +17,8 @@
 }
 
  .progressbar {
+ 	position:absolute;
+ 	top:7%;
 	height: 7%;
 	width: 35%;
 }

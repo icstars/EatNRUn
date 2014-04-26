@@ -5,6 +5,7 @@ body {
 	background-image:url(../img/newbackground.png);
 	background-size: contain;
 	background-attachment: fixed;
+    font-size: 100%;
     height: 100%;
     background-repeat: repeat-x;
 }
@@ -44,25 +45,56 @@ html, body, .main-content{
     bottom: 0px;
 }
 #tick {
+    position:absolute;
     font-family: impact;
-    font-size: 23px;
+    font-size: 20px;
     color: gold;
-    width:100px;
-    height:50px;
+    top:14%;
+    left:50%;
+    width:font-size;
+    height:font-size;
     background-color: #000000;
 }
 #score {
+    position: absolute;
     font-family: impact;
-    font-size: 25px;
+    font-size: 20px;
     color: gold;
-    width:190px;
-    height:70px;
+    top:14%;
+    width:font-size;
+    height:font-size;
     border: 2px  #d3dfe8;
     background-color: #000000;
 }
+
+#pauseB{
+    position: absolute;
+    right:1%;
+    width:6%;
+    height:10%;
+}
+
 #resetbox {
     height: 200px;
     width: 1px;
     position: absolute;
     bottom: 0%;
     }
+
+@media screen and (max-width: 50em) {
+    #score,#tick {
+        font-size:2em;
+    }
+}
+ 
+@media screen and (max-width: 40em) {
+    #score, #tick {
+        font-size:1.5em;
+    }
+}
+ 
+@media screen and (max-width: 30em) {
+    #score, #tick {
+        font-size:1em;
+    }
+}
