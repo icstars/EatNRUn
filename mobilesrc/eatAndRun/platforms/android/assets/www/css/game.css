@@ -81,20 +81,20 @@ html, body, .main-content{
     bottom: 0%;
     }
 
-@media screen and (max-width: 50em) {
+@media screen and (min-width: 60em){
     #score,#tick {
         font-size:2em;
     }
 }
  
-@media screen and (max-width: 40em) {
+@media screen and (min-width: 40em) and (max-width: 60em){
     #score, #tick {
         font-size:1.5em;
     }
 }
  
-@media screen and (max-width: 30em) {
+@media screen and (min-width: 20em) and (max-width: 40em){
     #score, #tick {
-        font-size:1em;
+        font-size:1.2em;
     }
 }
