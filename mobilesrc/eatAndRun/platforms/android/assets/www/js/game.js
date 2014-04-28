@@ -60,6 +60,42 @@ function Game(horizontalDelta) {
     this.score=0;
 }
 
+
+function generateFood(id){
+    //generate random item between 1 and 16
+     var foodIdx = Math.floor(Math.random() * 16) + 1;
+     //var laneID = Math.floor(Math.random() * 2) + 1;
+     //get random item from foodmap and store in foodParam
+     var foodParams = foodMap[foodIdx];
+     //create new food object using random item 
+     var food = new Food(foodParams);
+     //tells food item slot/position it is in
+     food.id = id;
+     //adding food to array of items that will appear
+     game.foodList.push(food);
+     //generating img tag for food
+     var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+id+'">');
+     //position items on the bottom track off screen based on id number
+    switchLanes($el, food.id);
+     //takes image and puts onto html
+     $('.main-content').append($el);
+}
+//jsonp call from the backend
+/* jsonp(id)
+$.ajax({
+    type: 'GET',
+    url:'http://eatnrun-staging.herokuapp.com/foods/random.json',
+    jsonpCallback: 'callback', 
+    dataType: 'jsonp',
+    success: function(data) {
+        console.log("success", data);
+    }
+}); */
+//callback when jsonp call is succesful
+function callback(data) {
+    console.log(data);
+}
+
 function Avatar(isInBottomLane) {
     this.isInBottomLane = isInBottomLane;
 }
@@ -87,14 +123,10 @@ function move_background() {
 }
 
 var nextId = 10;
-function addNewFood() {
-    var foodIdx = Math.floor(Math.random() * 16) + 1;
-    var food = new Food(foodMap[foodIdx]);
-    food.id = nextId++;
-    game.foodList.push(food);
-    var $el = $('<img class="food" src="img/sm'+foodMap[foodIdx].name.toLowerCase() +'.png" id="food'+food.id+'">');
-    switchLanes($el, food.id)
-    $('.main-content').append($el);
+function addNewFood()  {
+    var id = nextId++;
+    console.log("id: " + id);
+
 }
 
 //the selector id for the element, index of the food
@@ -284,23 +316,7 @@ $(document).ready(function () {
     tickinterval = setInterval(move_background, 6);
 //run 10 times from 0 to 9
      for(var i = 0; i<10; i++){
-         //generate random item between 1 and 16
-         var foodIdx = Math.floor(Math.random() * 16) + 1;
-         //var laneID = Math.floor(Math.random() * 2) + 1;
-         //get random item from foodmap and store in foodParam
-         var foodParams = foodMap[foodIdx];
-         //create new food object using random item 
-         var food = new Food(foodParams);
-         //tells food item slot/position it is in
-         food.id = i;
-         //adding food to array of items that will appear
-         game.foodList.push(food);
-         //generating img tag for food
-         var $el = $('<img class="food" src="img/sm'+ foodParams.name.toLowerCase() +'.png" id="food'+i+'">');
-         //position items on the bottom track off screen based on id number
-        switchLanes($el, i);
-         //takes image and puts onto html
-         $('.main-content').append($el);
+         generateFood(i);
      }
 
     $("body").click(function (event) {
