@@ -81,7 +81,7 @@ function generateFood(id){
      $('.main-content').append($el);
 }
 //jsonp call from the backend
-/* jsonp(id)
+// jsonp(id)
 $.ajax({
     type: 'GET',
     url:'http://eatnrun-staging.herokuapp.com/foods/random.json',
@@ -90,7 +90,8 @@ $.ajax({
     success: function(data) {
         console.log("success", data);
     }
-}); */
+}); 
+
 //callback when jsonp call is succesful
 function callback(data) {
     console.log(data);
@@ -125,6 +126,7 @@ function move_background() {
 var nextId = 10;
 function addNewFood()  {
     var id = nextId++;
+    generateFood(id);
     console.log("id: " + id);
 
 }
