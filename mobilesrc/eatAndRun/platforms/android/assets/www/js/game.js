@@ -358,7 +358,7 @@ else {
 clearInterval(ticker); // stop counting at zero
 // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
 //calling end screen
-document.location.href="endscreen.html";
+document.location.href=endDecision;
 window.localStorage.setItem("score", game.score);
 }
 
