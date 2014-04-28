@@ -1,19 +1,18 @@
-/*Decreasing progress bar*/
-
+/*Decreasing nutrition bar*/
 function decrease(dec) {
-    var gw = $('.greenbar').width();
-    var rw = $('.redbar').width();
-    var perc = (gw / rw) * 100;
-    if (perc >= 0 + dec) {
-        var perc = perc - dec;
-        avatarSpeed(perc);
-        endDecision = decideCurrentCoachDocument(perc);
+    var greenWidth = $('.greenbar').width();
+    var redWidth = $('.redbar').width();
+    var percentageGreen = (greenWidth / redWidth) * 100;
+    if (percentageGreen >= 0 + dec) {
+        var percentageGreen = percentageGreen - dec;
+        avatarSpeed(percentageGreen);
+        endDecision = decideCurrentCoachDocument(percentageGreen);
     }
     else {
-        perc = 0;
+        percentageGreen = 0;
     }
-    $('.greenbar').css('width', perc + "%");
-    console.log("width: " + perc);
+    $('.greenbar').css('width', percentageGreen + "%");
+    console.log("width: " + percentageGreen);
 }
 
 
@@ -42,7 +41,7 @@ function increase(inc) {
  */
 function Food(params) {
     this.name = params.name;
-    this.healthValue = params.healthValue;
+    this.healthValue = params.point_value;
     this.id = null;
 }
 
@@ -51,7 +50,6 @@ Food.prototype.renderFood = function () {
         $("body").append('<div class="fruitContainer bottomLane"></div>');
     } else {
     }
-
 }
 
 function Game(horizontalDelta) {
@@ -62,39 +60,28 @@ function Game(horizontalDelta) {
 
 
 function generateFood(id){
-    //generate random item between 1 and 16
-     var foodIdx = Math.floor(Math.random() * 16) + 1;
-     //var laneID = Math.floor(Math.random() * 2) + 1;
-     //get random item from foodmap and store in foodParam
-     var foodParams = foodMap[foodIdx];
-     //create new food object using random item 
-     var food = new Food(foodParams);
-     //tells food item slot/position it is in
-     food.id = id;
-     //adding food to array of items that will appear
-     game.foodList.push(food);
-     //generating img tag for food
-     var $el = $('<img class="food" src="img/sm'+ foodParams.name +'.png" id="food'+id+'">');
-     //position items on the bottom track off screen based on id number
-    switchLanes($el, food.id);
-     //takes image and puts onto html
-     $('.main-content').append($el);
-}
-//jsonp call from the backend
-// jsonp(id)
-$.ajax({
-    type: 'GET',
-    url:'http://eatnrun-staging.herokuapp.com/foods/random.json',
-    jsonpCallback: 'callback', 
-    dataType: 'jsonp',
-    success: function(data) {
-        console.log("success", data);
-    }
-}); 
-
-//callback when jsonp call is succesful
-function callback(data) {
-    console.log(data);
+    //jsonp call from the backend
+    $.ajax({
+        type: 'GET',
+        url:'http://eatnrun-staging.herokuapp.com/foods/random.json',
+        jsonpCallback: 'callback', 
+        dataType: 'jsonp',
+        success: function(data) 
+        {
+            console.log("success", data);
+            var food = new Food(data);
+            //tells food item slot/position it is in
+            food.id = id;
+            //adding food to array of items that will appear
+            game.foodList.push(food);
+            //generating img tag for food
+            var $el = $('<img class="food" src="img/sm'+ data.name +'.png" id="food'+id+'">');
+            //position items on the bottom track off screen based on id number
+            switchLanes($el, food.id);
+            //takes image and puts onto html
+            $('.main-content').append($el);
+        }
+    }); 
 }
 
 function Avatar(isInBottomLane) {
