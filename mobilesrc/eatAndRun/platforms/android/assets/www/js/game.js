@@ -299,7 +299,7 @@ var foodMap = {
     };
 
 
-$(document).ready(function () {
+window.onload= function () {
     game = new Game(1);
     avatar = new Avatar(true);
     tickinterval = setInterval(move_background, 6);
@@ -320,7 +320,7 @@ $(document).ready(function () {
     });
     /* var food = new Food(10, true);
      food.renderFood();*/
-})
+}
 
     /*Decreasing timer*/
 	
