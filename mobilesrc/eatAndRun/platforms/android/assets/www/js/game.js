@@ -1,35 +1,23 @@
-/*Decreasing nutrition bar*/
-function decrease(dec) {
+/*Adjust nutrition bar*/
+function adjustNutritionBar(healthVal) {
     var greenWidth = $('.greenbar').width();
     var redWidth = $('.redbar').width();
     var percentageGreen = (greenWidth / redWidth) * 100;
-    if (percentageGreen >= 0 + dec) {
-        var percentageGreen = percentageGreen - dec;
+
+    var changeValue = Math.ceil((healthVal/DIVIDEND) * 100);
+
+    if (percentageGreen >= 0 + changeValue && percentageGreen <= 100 - changeValue) {
+        var percentageGreen = percentageGreen + changeValue;
         avatarSpeed(percentageGreen);
         endDecision = decideCurrentCoachDocument(percentageGreen);
     }
-    else {
+    else if(percentageGreen < 0 + changeValue)
         percentageGreen = 0;
-    }
+    else if(percentageGreen > 100 - changeValue)
+        percentageGreen = 100;
+
     $('.greenbar').css('width', percentageGreen + "%");
     console.log("width: " + percentageGreen);
-}
-
-
-function increase(inc) {
-    var rw = $('.redbar').width();
-    var gw = $('.greenbar').width();
-    var perc = (gw / rw) * 100;
-    if (perc <= 100 - inc) {
-        var perc = perc + inc;
-        avatarSpeed(perc);
-        endDecision = decideCurrentCoachDocument(perc);
-    }
-    else {
-        perc = 100;
-    }
-    $('.greenbar').css('width', perc + "%");
-    console.log("Width: " + perc);
 }
 
 
@@ -75,7 +63,7 @@ function generateFood(id){
             //adding food to array of items that will appear
             game.foodList.push(food);
             //generating img tag for food
-            var $el = $('<img class="food" src="img/sm'+ data.name +'.png" id="food'+id+'">');
+            var $el = $('<img class="food" src="img/sm'+ food.name.toLowerCase() +'.png" id="food'+id+'">');
             //position items on the bottom track off screen based on id number
             switchLanes($el, food.id);
             //takes image and puts onto html
@@ -165,7 +153,7 @@ function move_food(id, idx) {
     foodtop<avatarbottom &&
     foodleft<avatarright)
     {   
-        adjustNB(game.foodList[idx].healthValue);
+        adjustNutritionBar(game.foodList[idx].healthValue);
         game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
         console.log("foodhit");
@@ -196,25 +184,6 @@ function move_food(id, idx) {
         $("#" + id).remove();
         addNewFood();}
 }
-
-
-function adjustNB(hVal)
-{
-    var chg = Math.ceil(Math.abs((hVal/DIVIDEND) * 100));
-    
-    if(hVal < 0)
-    {
-        decrease(chg);
-        console.log(chg);
-    }
-    else if (hVal > 0)
-    {
-        increase(chg);
-        console.log(chg);
-    }
-
-}
-
 
 //switchLanes with a food object and food position as
 //arguments. Will randomly place a food object onto
@@ -318,14 +287,9 @@ window.onload= function () {
             }
 
     });
-    /* var food = new Food(10, true);
-     food.renderFood();*/
 }
 
-    /*Decreasing timer*/
-	
-/*author Philip M. 2010*/
-
+/*Decreasing timer*/
 $(function() {
 var timeInSecs;
 var ticker;
