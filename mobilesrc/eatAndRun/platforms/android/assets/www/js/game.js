@@ -33,12 +33,6 @@ function Food(params) {
     this.id = null;
 }
 
-Food.prototype.renderFood = function () {
-    if (this.isInBottomLane) {
-        $("body").append('<div class="fruitContainer bottomLane"></div>');
-    } else {
-    }
-}
 
 function Game(horizontalDelta) {
     this.horizontalDelta = horizontalDelta;
@@ -54,8 +48,7 @@ function generateFood(id){
         url:'http://eatnrun-staging.herokuapp.com/foods/random.json',
         jsonpCallback: 'callback', 
         dataType: 'jsonp',
-        success: function(data) 
-        {
+        success: function(data) {
             console.log("success", data);
             var food = new Food(data);
             //tells food item slot/position it is in
@@ -72,9 +65,11 @@ function generateFood(id){
     }); 
 }
 
+
 function Avatar(isInBottomLane) {
     this.isInBottomLane = isInBottomLane;
 }
+
 
 Avatar.prototype.moveToTopLane = function () {
     $("#avabox").animate({"bottom": "125px"});
@@ -82,11 +77,13 @@ Avatar.prototype.moveToTopLane = function () {
     this.isInBottomLane = false;
 }
 
+
 Avatar.prototype.moveToBottomLane = function () {
     $("#avabox").animate({"bottom": "3px"});
     //$("#lunchbox").animate({"bottom": "3px"});
     this.isInBottomLane = true;
 }
+
 
 var background_position = 0;
 function move_background() {
@@ -98,13 +95,14 @@ function move_background() {
     }
 }
 
+
 var nextId = 10;
 function addNewFood()  {
     var id = nextId++;
     generateFood(id);
     console.log("id: " + id);
-
 }
+
 
 //the selector id for the element, index of the food
 //in the food list
@@ -151,8 +149,7 @@ function move_food(id, idx) {
     if (foodright>avatarleft && 
     foodbottom>avatartop &&
     foodtop<avatarbottom &&
-    foodleft<avatarright)
-    {   
+    foodleft<avatarright) {   
         adjustNutritionBar(game.foodList[idx].healthValue);
         game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
@@ -161,35 +158,34 @@ function move_food(id, idx) {
         addNewFood();
         console.log("score"+game.score);
 		$("#score").html("SCORE: " + game.score);
-        }
+    }
     
     if (lunchrt>avatarleft && 
         lunchbot>avatartop &&
         lunchtop<avatarbottom &&
-        lunchlft<avatarright)
-        {
-		clearInterval(tickinterval); 
-		document.location.href="endscreen_coach4.html";
-		console.log("lunchhit");
-        window.localStorage.setItem("score", game.score);
-        }
+        lunchlft<avatarright) {
+		  clearInterval(tickinterval); 
+		  document.location.href="endscreen_coach4.html";
+		  console.log("lunchhit");
+          window.localStorage.setItem("score", game.score);
+    }
         
 	if	(resetboxright>foodleft && 
 		resetboxbottom>foodtop &&
 		resetboxtop<foodbottom &&
-		resetboxleft<foodright)
-		{   
-        game.foodList.splice(idx, 1);
-        console.log("resetBox");
-        $("#" + id).remove();
-        addNewFood();}
+		resetboxleft<foodright) {   
+           game.foodList.splice(idx, 1);
+           console.log("resetBox");
+           $("#" + id).remove();
+           addNewFood();
+    }
 }
+
 
 //switchLanes with a food object and food position as
 //arguments. Will randomly place a food object onto
 //the top or bottom lane. 
-function switchLanes(foodObj, i)
-{
+function switchLanes(foodObj, i) {
     var laneID = Math.floor(Math.random() * 2) + 1;
 
     switch(laneID)
@@ -207,39 +203,35 @@ function switchLanes(foodObj, i)
 //avatarSpeed function with current nutrition bar red/green ratio
 //as NBperc. Will move the avatar at certain points on the nutrition
 //bar.
-function avatarSpeed(NBperc)
-{
-
-       if (NBperc >= 0 && NBperc < 10)
-        {
-            $("#avabox").animate({"right": "85%"}, 2000);
-        }    
-        else if (NBperc > 20 && NBperc <= 30)
-        {
-         $("#avabox").animate({"right": "65%"}, 2000);
-        }
-        else if (NBperc > 45 && NBperc <= 55)
-        {
-             $("#avabox").animate({"right": "45%"});
-        } 
-        else if (NBperc > 70 && NBperc <= 80)
-        {
-              $("#avabox").animate({"right": "25%"}, 1000);
-        }
-        else if(NBperc >= 90 && NBperc <= 100)
-         {
-            $("#avabox").animate({"right": "5%"}, 1000);
-         }
-        else
-            return;
+function avatarSpeed(NBperc) {
+    if (NBperc >= 0 && NBperc < 10) {
+        $("#avabox").animate({"right": "85%"}, 2000);
+    }    
+    else if (NBperc > 20 && NBperc <= 30) {
+        $("#avabox").animate({"right": "65%"}, 2000);
+    }
+    else if (NBperc > 45 && NBperc <= 55) {
+        $("#avabox").animate({"right": "45%"});
+    } 
+    else if (NBperc > 70 && NBperc <= 80) {
+        $("#avabox").animate({"right": "25%"}, 1000);
+    }
+    else if(NBperc >= 90 && NBperc <= 100) {
+        $("#avabox").animate({"right": "5%"}, 1000);
+    }
+    else
+        return;
 }
 
+
 $(function () {
+
 
 });
 /**
  * Append a fruit to the body
  */
+
 
 var tickinterval;
 var game;
@@ -281,96 +273,118 @@ window.onload= function () {
         if (event.clientY > $(document).height() / 2) {
             //bottom half clicked move avatar down
             avatar.moveToBottomLane();
-            } else {
+        } 
+        else {
             //top half
             avatar.moveToTopLane();
-            }
-
+        }
     });
 }
 
+
 /*Decreasing timer*/
 $(function() {
-var timeInSecs;
-var ticker;
-var remSecs;
+    var timeInSecs;
+    var ticker;
+    var remSecs;
 
-function startTimer(secs){
-timeInSecs = parseInt(secs)-1;
-ticker = setInterval(tick,1000);   // every second
-}
+    function startTimer(secs){
+        timeInSecs = parseInt(secs)-1;
+        ticker = setInterval(tick,1000);   // every second
+    }
 
-function tick() {
-var secs = timeInSecs;
-if (secs>0) {
-timeInSecs--;
-}
-else {
-clearInterval(ticker); // stop counting at zero
-// startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
-//calling end screen
-document.location.href=endDecision;
-window.localStorage.setItem("score", game.score);
-}
+    function tick() {
+        var secs = timeInSecs;
+        if (secs>0) {
+            timeInSecs--;
+        }
+        else {
+            clearInterval(ticker); // stop counting at zero
+            // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+            //calling end screen
+            document.location.href=endDecision;
+            window.localStorage.setItem("score", game.score);
+        }
 
-document.getElementById("tick").innerHTML = secs;
-}
+        document.getElementById("tick").innerHTML = secs;
+    }
 
-startTimer(60);  // 60 seconds 
 
-//Click event for pause button. Remaining time on timer will
-//be stored in remSecs and the timer will stop.
-$("#pauseB").click(function(){
-          remSecs = timeInSecs + 1;
-          clearInterval(ticker);});
+    startTimer(60);  // 60 seconds 
 
-//Click event for resume button on pause menu. Remaining time stored
-//in remSecs is used to restart the timer.
-$("#close").click(function(){
-          startTimer(remSecs);});
+    //Click event for pause button. Remaining time on timer will
+    //be stored in remSecs and the timer will stop.
+    $("#pauseB").click(function() {
+        remSecs = timeInSecs + 1;
+        clearInterval(ticker);
+    });
+
+    //Click event for resume button on pause menu. Remaining time stored
+    //in remSecs is used to restart the timer.
+    $("#close").click(function() {
+          startTimer(remSecs);
+    });
 });
+
+
 //functions for coaches
 function isNumber(value) {
-        return typeof value === 'number';
+    return typeof value === 'number';
 }
+
 
 function isntNumber(value) {
-        return typeof value !== 'number';
+    return typeof value !== 'number';
 }
 
+
 function isNumberWithin(value, lowValue, highValue) {
-        if (value < lowValue) { return false; }
-        if (value > highValue) { return false; }
-        return true;
+    if (value < lowValue) { 
+        return false; 
+    }
+    if (value > highValue) { 
+        return false; 
+    }
+        
+    return true;
 //end functions for coaches
 }
 
+
 function checkIsValidPercentage(value) {
-        if (isntNumber(value)) {
-                new Error("value must be a number!");
-                return false;
-        }
-        if (isNumberWithin(value, 0, 100)) { return true; }
-        new Error("value must be within 0 to 100 to be a percentage!");
+    if (isntNumber(value)) {
+        new Error("value must be a number!");
         return false;
+    }
+        
+    if (isNumberWithin(value, 0, 100)) { 
+        return true; 
+    }
+        
+    new Error("value must be within 0 to 100 to be a percentage!");
+    return false;
 }
+
 
 function isPercentageWithin(value, lowValue, highValue) {
-        checkIsValidPercentage(value);
-        return isNumberWithin(value, lowValue, highValue);
+    checkIsValidPercentage(value);
+    return isNumberWithin(value, lowValue, highValue);
 }
 
+
 function decideCurrentCoachDocument(healthPercentageValue) {
-       /* if (!isIncludedBetween(healthPercentageValue, 0, 100)) {
-                new Error("healthPercentageValue must be ")
-        }*/
-        if (isPercentageWithin(healthPercentageValue, 0, 39)) {
-                endScreenDocument = "endscreen_coach2.html";
-        } else if (isPercentageWithin(healthPercentageValue, 40, 60)) {
-                endScreenDocument = "endscreen_coach1.html";
-        } else if(isPercentageWithin(healthPercentageValue, 61, 100)){
-                endScreenDocument = "endscreen_coach3.html";
-        }
+    /* if (!isIncludedBetween(healthPercentageValue, 0, 100)) {
+            new Error("healthPercentageValue must be ")
+    }*/
+    if (isPercentageWithin(healthPercentageValue, 0, 39)) {
+        endScreenDocument = "endscreen_coach2.html";
+    } 
+    else if (isPercentageWithin(healthPercentageValue, 40, 60)) {
+        endScreenDocument = "endscreen_coach1.html";
+    } 
+    else if(isPercentageWithin(healthPercentageValue, 61, 100)){
+        endScreenDocument = "endscreen_coach3.html";
+    }
         
-        return endScreenDocument;
-		}
+    return endScreenDocument;
+}

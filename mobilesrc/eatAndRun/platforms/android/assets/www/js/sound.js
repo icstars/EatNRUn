@@ -1,6 +1,4 @@
-<script>
 $(function() {	
-	
 	$( "#Slider2" ).slider({ 
 		min: 0, 
 		max: 100, 
@@ -18,9 +16,4 @@ $(function() {
 			document.getElementById("  ").volume = ($(this).slider("value")/100);
 		}
 	});
-
-
-	
-
 });
-</script>
