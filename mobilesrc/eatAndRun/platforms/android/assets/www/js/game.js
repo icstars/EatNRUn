@@ -191,10 +191,10 @@ function switchLanes(foodObj, i) {
     switch(laneID)
          {
             case 1:
-             $(foodObj).css({"bottom": 150, "right": -(i * 88)});
+             $(foodObj).css({"bottom": 150, "right": -88});
              break;
             case 2:
-             $(foodObj).css({"bottom": 0, "right": -(i * 88)});
+             $(foodObj).css({"bottom": 0, "right": -88});
              break;
          }
 }
