@@ -20,6 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        console.log("app object called");
+
     },
     // Bind Event Listeners
     //
@@ -27,6 +29,9 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('backbutton', function () {
+            alert("hello");
+        });
     },
     // deviceready Event Handler
     //
