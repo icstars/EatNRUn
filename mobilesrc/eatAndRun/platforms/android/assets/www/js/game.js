@@ -72,16 +72,26 @@ function Avatar(isInBottomLane) {
 
 
 Avatar.prototype.moveToTopLane = function () {
-    $("#avabox").animate({"bottom": "125px"});
-    //$("#lunchbox").animate({"bottom": "125px"});
+    $("#avabox").animate({"bottom": "125px"}, function(){
+         moveLunchLadyTopLane()});
     this.isInBottomLane = false;
 }
 
 
 Avatar.prototype.moveToBottomLane = function () {
-    $("#avabox").animate({"bottom": "3px"});
-    //$("#lunchbox").animate({"bottom": "3px"});
+    $("#avabox").animate({"bottom": "3px"}, function(){
+         moveLunchLadyBottomLane()});
     this.isInBottomLane = true;
+}
+
+
+function moveLunchLadyTopLane() {
+    $("#lunchbox").animate({"bottom": "125px"});
+}
+
+
+function moveLunchLadyBottomLane() {
+    $("#lunchbox").animate({"bottom": "3px"});
 }
 
 
