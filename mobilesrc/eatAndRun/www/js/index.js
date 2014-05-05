@@ -45,5 +45,19 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
+    },
+    onBackKeyDown: function(event) {
+    	navigator.notification.confirm("Are you sure you want to leave?", function(buttonIndex){
+    		if (buttonIndex == 1) {
+    			//quit from game....
+    			//TODO items: do we want to exit completely or go back to home screen?
+    			// TODO: do we need to save progress before we exit?
+    			navigator.app.exitApp();
+    		} else {
+    			event.preventDefault();
+    		}
+    	}, "Title", ["Ok", "Cancel"]);
     }
 };

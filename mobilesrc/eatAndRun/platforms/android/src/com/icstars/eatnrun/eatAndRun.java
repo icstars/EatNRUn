@@ -20,6 +20,8 @@
 package com.icstars.eatnrun;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
+
 import org.apache.cordova.*;
 
 public class eatAndRun extends CordovaActivity 
