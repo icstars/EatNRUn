@@ -278,19 +278,15 @@ window.onload= function () {
      for(var i = 0; i<10; i++){
          generateFood(i);
      }
-
-    $("body").click(function (event) {
-        if (event.clientY > $(document).height() / 2) {
-            //bottom half clicked move avatar down
-            avatar.moveToBottomLane();
-        } 
-        else {
-            //top half
-            avatar.moveToTopLane();
-        }
-    });
 }
 
+$(function() {//Enable swiping...
+	$("#avabox").swipe( {//Generic swipe handler for all directions
+	swipe:function(event, direction, distance, duration, fingerCount) {
+		if (direction == "up"){avatar.moveToTopLane();}
+		else if (direction == "down"){avatar.moveToBottomLane();}},
+	threshold:100});				   
+});
 
 /*Decreasing timer*/
 $(function() {
