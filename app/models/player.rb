@@ -7,17 +7,21 @@ class Player < ActiveRecord::Base
   JUST_RIGHT_POINTS_MESSAGE = "YOU’RE A HEALTH GURU! You know a balanced diet does not mean a cookie in each hand"
 
   def coach_message
-    if score > 200
+    if self.score_percentage > 60
       TOO_MANY_POINTS_MESSAGE
-    elsif score < -200
+    elsif self.score_percentage < 40
       TOO_FEW_POINTS_MESSAGE
     else
       JUST_RIGHT_POINTS_MESSAGE
     end
   end
 
+  def score_percentage
+    (self.score.to_f / 1600.0) * 100.0
+  end
+
   def score
-    self.foods.inject(0) {|sum, food| sum += food.point_value}
+    self.foods.inject(1600.0*0.5) {|sum, food| sum += food.point_value}
   end
 
   def to_s
