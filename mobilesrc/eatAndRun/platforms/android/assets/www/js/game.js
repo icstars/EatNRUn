@@ -17,6 +17,7 @@ function adjustNutritionBar(healthVal) {
         percentageGreen = 100;
 
     $('.greenbar').css('width', percentageGreen + "%");
+    window.localStorage.setItem("greenFill", percentageGreen);
     console.log("width: " + percentageGreen);
 }
 
@@ -178,6 +179,7 @@ function move_food(id, idx) {
 		  document.location.href="endscreen_coach4.html";
 		  console.log("lunchhit");
           window.localStorage.setItem("score", game.score);
+          window.localStorage.setItem("greenFill", 0);
     }
         
 	if	(resetboxright>foodleft && 
@@ -279,6 +281,17 @@ window.onload= function () {
          generateFood(i);
      }
 }
+
+$("body").click(function (event) {
+        if (event.clientY > $(document).height() / 2) {
+            //bottom half clicked move avatar down
+            avatar.moveToBottomLane();
+        } 
+        else {
+            //top half
+            avatar.moveToTopLane();
+        }
+});
 
 $(function() {//Enable swiping...
 	$("#avabox").swipe( {//Generic swipe handler for all directions
