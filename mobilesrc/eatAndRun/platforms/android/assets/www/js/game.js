@@ -166,7 +166,7 @@ function move_food(id, idx) {
         game.foodList.splice(idx, 1);
         console.log("foodhit");
         $("#" + id).remove();
-        addNewFood();
+        //addNewFood();
         console.log("score"+game.score);
 		$("#score").html("SCORE: " + game.score);
     }
@@ -176,6 +176,7 @@ function move_food(id, idx) {
         lunchtop<avatarbottom &&
         lunchlft<avatarright) {
 		  clearInterval(tickinterval); 
+          clearInterval(foodinterval);
 		  document.location.href="endscreen_coach4.html";
 		  console.log("lunchhit");
           window.localStorage.setItem("score", game.score);
@@ -189,16 +190,26 @@ function move_food(id, idx) {
            game.foodList.splice(idx, 1);
            console.log("resetBox");
            $("#" + id).remove();
-           addNewFood();
+           //addNewFood();
     }
 }
 
 
+var lastLane = 2;
 //switchLanes with a food object and food position as
 //arguments. Will randomly place a food object onto
 //the top or bottom lane. 
 function switchLanes(foodObj, i) {
     var laneID = Math.floor(Math.random() * 2) + 1;
+
+    if(laneID === lastLane && laneID === 1)
+    {
+        laneID +=1 ;
+    }
+    else if(laneID === lastLane && laneID === 2)
+    {
+         laneID -=1;
+    }
 
     switch(laneID)
          {
@@ -209,6 +220,8 @@ function switchLanes(foodObj, i) {
              $(foodObj).css({"bottom": 0, "right": -88});
              break;
          }
+
+    lastLane = laneID;
 }
 
 
@@ -246,6 +259,7 @@ $(function () {
 
 
 var tickinterval;
+var foodinterval;
 var game;
 var avatar;
 var DIVIDEND = 1600;
@@ -277,9 +291,9 @@ window.onload= function () {
     avatar = new Avatar(true);
     tickinterval = setInterval(move_background, 6);
 //run 10 times from 0 to 9
-     for(var i = 0; i<10; i++){
+    /* for(var i = 0; i<10; i++){
          generateFood(i);
-     }
+     }*/
 }
 
 $("body").click(function (event) {
@@ -310,6 +324,7 @@ $(function() {
     function startTimer(secs){
         timeInSecs = parseInt(secs)-1;
         ticker = setInterval(tick,1000);   // every second
+        foodinterval = setInterval(addNewFood,1000);
     }
 
     function tick() {
@@ -336,12 +351,13 @@ $(function() {
     $("#pauseB").click(function() {
         remSecs = timeInSecs + 1;
         clearInterval(ticker);
+        clearInterval(foodinterval);
     });
 
     //Click event for resume button on pause menu. Remaining time stored
     //in remSecs is used to restart the timer.
     $("#close").click(function() {
-          startTimer(remSecs);
+        startTimer(remSecs);
     });
 });
 
