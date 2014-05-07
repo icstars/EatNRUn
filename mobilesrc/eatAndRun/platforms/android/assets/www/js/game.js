@@ -119,79 +119,68 @@ function addNewFood()  {
 //in the food list
 function move_food(id, idx) {
     $("#" + id).css({"right": "+=" + game.horizontalDelta});
-    //hit test for food+avatar 
-    var food =$("#"+id);
-    var left_offset = $("#" + id).offset().left;
-    var foodposition=food.offset();
-    var foodwidth=food.width();
-    var foodheight=food.height();
-    var foodleft=foodposition.left;
-    var foodtop=foodposition.top;
-    var foodright=foodleft+foodwidth;
-    var foodbottom=foodtop+foodheight;
-
-    var lunchlady =$("#lunchbox");
-    var lunchpos=lunchlady.offset();
-    var lunchwid=lunchlady.width();
-    var lunchhgt=lunchlady.height();
-    var lunchlft=lunchpos.left;
-    var lunchtop=lunchpos.top;
-    var lunchrt=lunchlft+lunchwid;
-    var lunchbot=lunchtop+lunchhgt;
+  
+    //Sets side of food, lunchlady, avatar, and resetbox for collision test
+    var food = imageSidesSetter($("#"+id));
+    var lunchlady = imageSidesSetter($("#lunchbox"));
+    var avatar = imageSidesSetter($("#avabox"));
+    var resetbox =imageSidesSetter($("#resetbox"));
     
-    var avatar =$("#avabox");
-    var avatarposition=avatar.offset();
-    var avatarwidth=avatar.width();
-    var avatarheight=avatar.height();
-    var avatarleft=avatarposition.left;
-    var avatartop=avatarposition.top;
-    var avatarright=avatarleft+avatarwidth;
-    var avatarbottom=avatartop+avatarheight;
-    
-    var resetbox =$("#resetbox");
-    var resetboxposition=resetbox.offset();
-    var resetboxwidth=resetbox.width();
-    var resetboxheight=resetbox.height();
-    var resetboxleft=resetboxposition.left;
-    var resetboxtop=resetboxposition.top;
-    var resetboxright=resetboxleft+resetboxwidth;
-    var resetboxbottom=resetboxtop+resetboxheight;
-        
-    if (foodright>avatarleft && 
-    foodbottom>avatartop &&
-    foodtop<avatarbottom &&
-    foodleft<avatarright) {   
+    //Tests for collision between avatar and food and updates 
+    //nutritionbar, score and removes food from the screen
+    //when collision is detected.
+    if (food.right>avatar.left && 
+    food.bottom>avatar.top &&
+    food.top<avatar.bottom &&
+    food.left<avatar.right) {  
         adjustNutritionBar(game.foodList[idx].healthValue);
         game.score += Math.abs(game.foodList[idx].healthValue);
         game.foodList.splice(idx, 1);
-        console.log("foodhit");
-        $("#" + id).remove();
-        //addNewFood();
-        console.log("score"+game.score);
+        food.remove();
 		$("#score").html("SCORE: " + game.score);
     }
     
-    if (lunchrt>avatarleft && 
-        lunchbot>avatartop &&
-        lunchtop<avatarbottom &&
-        lunchlft<avatarright) {
+    //Tests for collision between avatar and lunchlady 
+    //and updates nutritionbar, score and ends the run 
+    //when collision is detected.
+    if (lunchlady.right>avatar.left && 
+        lunchlady.bottom>avatar.top &&
+        lunchlady.top<avatar.bottom &&
+        lunchlady.left<avatar.right) {
 		  clearInterval(tickinterval); 
           clearInterval(foodinterval);
 		  document.location.href="endscreen_coach4.html";
-		  console.log("lunchhit");
           window.localStorage.setItem("score", game.score);
           window.localStorage.setItem("greenFill", 0);
     }
         
-	if	(resetboxright>foodleft && 
-		resetboxbottom>foodtop &&
-		resetboxtop<foodbottom &&
-		resetboxleft<foodright) {   
+    //Tests for collision between food and resetbox
+    //and removes food from the screen when collison
+    //is detected.
+	if (resetbox.right>food.left && 
+        resetbox.bottom>food.top &&
+        resetbox.top<food.bottom &&
+        resetbox.left<food.right) {    
            game.foodList.splice(idx, 1);
-           console.log("resetBox");
-           $("#" + id).remove();
-           //addNewFood();
+           food.remove();
     }
+}
+
+
+//Sets the sides for an image Object 
+function imageSidesSetter(imgObject)
+{
+    var imageObject = {};
+    imageObject = imgObject;
+    imageObject.pos=imgObject.offset();
+    imageObject.width=imgObject.width();
+    imageObject.height=imgObject.height();
+    imageObject.left=imageObject.pos.left;
+    imageObject.top=imageObject.pos.top;
+    imageObject.right=imageObject.left+imageObject.width;
+    imageObject.bottom=imageObject.top+imageObject.height;
+
+    return (imageObject);
 }
 
 
@@ -309,9 +298,9 @@ $("body").click(function (event) {
 
 $(function() {//Enable swiping...
 	$("#avabox").swipe( {//Generic swipe handler for all directions
-	swipe:function(event, direction, distance, duration, fingerCount) {
-		if (direction == "up"){avatar.moveToTopLane();}
-		else if (direction == "down"){avatar.moveToBottomLane();}},
+	   swipe:function(event, direction, distance, duration, fingerCount) {
+		  if (direction == "up"){avatar.moveToTopLane();}
+		  else if (direction == "down"){avatar.moveToBottomLane();}},
 	threshold:100});				   
 });
 
